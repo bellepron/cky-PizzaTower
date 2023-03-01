@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CKY.Pooling
@@ -42,9 +43,17 @@ namespace CKY.Pooling
                 return null;
             }
 
-            GameObject objectToSpawn = poolDictionary[prefabTr].Dequeue();
+            GameObject objectToSpawn = poolDictionary[prefabTr].First();
 
-            objectToSpawn.SetActive(false);
+            if (objectToSpawn.activeInHierarchy == false)
+            {
+                objectToSpawn = poolDictionary[prefabTr].Dequeue();
+            }
+            else
+            {
+                objectToSpawn = Instantiate(prefabTr.gameObject, this.transform);
+            }
+
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = position;
             objectToSpawn.transform.rotation = rotation;
