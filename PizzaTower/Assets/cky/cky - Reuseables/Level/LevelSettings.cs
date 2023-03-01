@@ -6,6 +6,6 @@ namespace cky.Reuseables.Level
     public class LevelSettings : ScriptableObject
     {
         [SerializeField] private float exampleSpeed;
-        public float BreadOvenSettings { get { return exampleSpeed; } set { exampleSpeed = value; } }
+        public float ExapleSpeed { get { return exampleSpeed; } set { exampleSpeed = value; } }
     }
 }

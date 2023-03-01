@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: KitchenFloor
+    uniqueID: 1019881785
+    locked: 0
+  - name: Pole
+    uniqueID: 1365862591
+    locked: 0
+  - name: Elevator
+    uniqueID: 655613347
+    locked: 0
+  - name: Staff
+    uniqueID: 4166082401
+    locked: 0
+  - name: ParkingPos
+    uniqueID: 3197499923
+    locked: 0
+  - name: Ground
+    uniqueID: 2386743601
+    locked: 0
+  - name: FloorUI
+    uniqueID: 3784925543
+    locked: 0
+  - name: UI
+    uniqueID: 2032076007
+    locked: 0
