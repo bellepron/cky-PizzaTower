@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6379558812fd768409eced1f26a9e674, type: 3}
+  m_Name: Floor Settings
+  m_EditorClassIdentifier: 
+  <ChefPrefabTr>k__BackingField: {fileID: 3025755011098134997, guid: 8aa975ff8e753bd49b7babd9e8b519e4, type: 3}
+  <ChefsTablePrefabTr>k__BackingField: {fileID: 5358353399570210522, guid: d98ba82c8833522489d3a4b3714d087a, type: 3}
+  <ChefDeliveryPointX>k__BackingField: -2.5
+  <ChefSpawnLocalPositions>k__BackingField:
+  - {x: 4.3, y: 0.416, z: 0}
+  - {x: 3.0440001, y: 0.416, z: 0}
+  - {x: 1.7880001, y: 0.416, z: 0}
+  <ChefSettings>k__BackingField:
+  - {fileID: 11400000, guid: 1c698294e448c5f4db57bfffe8d4fa94, type: 2}
+  - {fileID: 11400000, guid: 6388871dba1a7e149a535f3bd9b83974, type: 2}
+  - {fileID: 11400000, guid: c271657af2f592245ab3e762a2d007a6, type: 2}

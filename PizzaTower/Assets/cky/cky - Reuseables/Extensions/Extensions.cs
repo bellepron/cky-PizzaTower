@@ -4,6 +4,15 @@ namespace cky.Reuseables.Extension
 {
     public static class Extensions
     {
+        public static Vector3 LocalUnitDirectionX(this Transform actorTr, Vector3 targetPos)
+        {
+            var direction = targetPos - actorTr.localPosition;
+            direction.y = 0.0f;
+            direction.z = 0.0f;
+            direction.Normalize();
+
+            return direction;
+        }
         public static void TurnToThis(this Transform actorTr, Vector3 targetPos, float rotationSpeed)
         {
             Vector3 direction = targetPos - actorTr.position;

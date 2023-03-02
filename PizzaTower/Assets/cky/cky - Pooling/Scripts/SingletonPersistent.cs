@@ -22,7 +22,7 @@ namespace CKY.Pooling
         }
         public static T Instance
         {
-            get => (T)Instance;
+            get => (T)_instance;
         }
 
         protected virtual void OnPerAwake() { }
