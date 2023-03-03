@@ -1,4 +1,4 @@
-using PizzaTower.Floors;
+using PizzaTower.Floor;
 using UnityEngine;
 
 namespace cky.Reuseables.Level

@@ -10,8 +10,6 @@ namespace PizzaTower.Characters.Chef.States
         public override void Enter()
         {
             stateMachine.Animator.Cook();
-
-            _timeCounter = stateMachine.CookTime;
         }
 
         public override void Exit()
@@ -21,8 +19,8 @@ namespace PizzaTower.Characters.Chef.States
 
         public override void Tick(float deltaTime)
         {
-            _timeCounter -= deltaTime;
-            if (_timeCounter <= 0.0f)
+            _timeCounter += deltaTime;
+            if (_timeCounter >= stateMachine.CookTime)
             {
                 stateMachine.SwitchState(new GoToDeliveryPointState(stateMachine));
             }

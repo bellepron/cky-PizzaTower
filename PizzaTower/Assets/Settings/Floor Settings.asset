@@ -23,3 +23,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c698294e448c5f4db57bfffe8d4fa94, type: 2}
   - {fileID: 11400000, guid: 6388871dba1a7e149a535f3bd9b83974, type: 2}
   - {fileID: 11400000, guid: c271657af2f592245ab3e762a2d007a6, type: 2}
+  <FloorMaxLevel>k__BackingField: 50
+  <ChefAddLevels>k__BackingField: 010000000a00000014000000
+  <StarAddLevels>k__BackingField: 0a000000140000001e0000002800000032000000

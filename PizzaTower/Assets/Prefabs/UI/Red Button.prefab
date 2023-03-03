@@ -390,7 +390,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1573039041170239135, guid: 0c605650d10887847bde360b11771c32, type: 3}
       propertyPath: m_Name
-      value: Button Text
+      value: Upgrade Cost Text
       objectReference: {fileID: 0}
     - target: {fileID: 4181999191567243481, guid: 0c605650d10887847bde360b11771c32, type: 3}
       propertyPath: m_Pivot.x

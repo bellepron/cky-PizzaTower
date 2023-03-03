@@ -4,30 +4,30 @@ using PizzaTower.Managers;
 using System.Linq;
 using UnityEngine;
 
-namespace PizzaTower.Floors
+namespace PizzaTower.Floor
 {
     public class ChefSpawner
     {
-        public Floor floor;
-        public Transform floorTransform;
+        private FloorController _floor;
+        private Transform _floorTransform;
         private FloorSettings _floorSettings;
         private Vector3[] _chefSpawnLocalPositions;
         private Transform _chefPrefabTr;
         private Transform _chefsTablePrefabTr;
         private int _chefCount;
 
-        public ChefSpawner(Floor floor)
+        public ChefSpawner(FloorController floor)
         {
-            this.floor = floor;
-            floorTransform = floor.transform;
-            _floorSettings = LevelManager.Instance.levelSettings.FloorSettings;
+            _floor = floor;
+            _floorTransform = floor.transform;
+            _floorSettings = floor.FloorSettings;
             _chefSpawnLocalPositions = _floorSettings.ChefSpawnLocalPositions;
             _chefPrefabTr = _floorSettings.ChefPrefabTr;
             _chefsTablePrefabTr = _floorSettings.ChefsTablePrefabTr;
 
             floor.UpgradeEvent += Upgrade;
 
-            if (_floorSettings.ChefAddLevels.Contains(0))
+            if (_floorSettings.ChefAddLevels.Contains(1))
                 Spawn();
         }
 
@@ -56,16 +56,16 @@ namespace PizzaTower.Floors
         private void CreateChef(Vector3 spawnPos)
         {
             var chefTr = PoolManager.Instance.Spawn(_chefPrefabTr, spawnPos, Quaternion.identity).transform;
-            chefTr.parent = floorTransform;
+            chefTr.parent = _floorTransform;
             chefTr.localPosition = spawnPos;
             var chefSM = chefTr.GetComponent<ChefStateMachine>();
-            chefSM.Initialize(floor, _floorSettings, _chefCount, spawnPos);
+            chefSM.Initialize(_floor, _floorSettings, _chefCount, spawnPos);
         }
 
         private void CreateChefsTable(Vector3 spawnPos)
         {
             var chefsTableTr = PoolManager.Instance.Spawn(_chefsTablePrefabTr, spawnPos, Quaternion.identity).transform;
-            chefsTableTr.parent = this.floorTransform;
+            chefsTableTr.parent = this._floorTransform;
             chefsTableTr.localPosition = spawnPos;
         }
     }
