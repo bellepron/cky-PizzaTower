@@ -1,6 +1,4 @@
-using PizzaTower.Floors;
 using PizzaTower.Helpers;
-using System;
 using UnityEngine;
 
 namespace PizzaTower.Characters.Chef
@@ -9,23 +7,13 @@ namespace PizzaTower.Characters.Chef
     {
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public float TransitionTime { get; private set; }
-        public float InitMoveSpeed { private get; set; }
-        public float InitCookSpeed { private get; set; }
-        public float MoveSpeed { private get; set; }
-        public float CookSpeed { private get; set; }
+        private float MovementSpeed { get; set; }
+        private float CookSpeed { get; set; }
 
-        public void Initialize(Floor floor, float movementSpeed, float cookTime)
+        public void UpdateValues(float movementSpeed, float cookSpeed)
         {
-            floor.UpgradeEvent += Upgrade;
-
-            InitMoveSpeed = MoveSpeed = movementSpeed;
-            InitCookSpeed = CookSpeed = 10 / cookTime;
-        }
-
-        private void Upgrade(int floorLevel)
-        {
-            MoveSpeed = InitMoveSpeed + (float)floorLevel * 0.1f;
-            CookSpeed = InitCookSpeed + (float)floorLevel * 0.1f;
+            MovementSpeed = movementSpeed;
+            CookSpeed = cookSpeed;
 
             UpdateSpeed();
         }
@@ -54,7 +42,7 @@ namespace PizzaTower.Characters.Chef
         {
             if (Animator.GetCurrentAnimatorStateInfo(0).IsTag(AnimatorHelper.TAG_WALK))
             {
-                SetAnimatorSpeed(MoveSpeed);
+                SetAnimatorSpeed(MovementSpeed);
             }
             else if (Animator.GetCurrentAnimatorStateInfo(0).IsTag(AnimatorHelper.TAG_COOK))
             {
