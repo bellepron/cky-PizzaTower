@@ -1,9 +1,10 @@
 using CKY.Pooling;
 using PizzaTower.Characters.Chef.StateMachine;
+using PizzaTower.Floors;
 using System.Linq;
 using UnityEngine;
 
-namespace PizzaTower.Floor
+namespace PizzaTower.Spawners
 {
     public class ChefSpawner
     {

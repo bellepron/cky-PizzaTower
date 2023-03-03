@@ -1,8 +1,9 @@
 using PizzaTower.Managers;
+using PizzaTower.Spawners;
 using System;
 using UnityEngine;
 
-namespace PizzaTower.Floor
+namespace PizzaTower.Floors
 {
     public class FloorController : MonoBehaviour
     {

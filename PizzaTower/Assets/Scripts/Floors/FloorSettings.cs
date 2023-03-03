@@ -1,9 +1,9 @@
 using PizzaTower.Characters.Chef;
 using UnityEngine;
 
-namespace PizzaTower.Floor
+namespace PizzaTower.Floors
 {
-    [CreateAssetMenu(menuName = "Scriptable Objects/Floor/New Floor Settings")]
+    [CreateAssetMenu(menuName = "Scriptable Objects/Floors/New Floor Settings")]
     public class FloorSettings : ScriptableObject
     {
         [field: SerializeField] public Transform ChefPrefabTr { get; private set; }

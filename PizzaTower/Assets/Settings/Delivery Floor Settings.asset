@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262ca278e237573408783a5be471c00c, type: 3}
+  m_Name: Delivery Floor Settings
+  m_EditorClassIdentifier: 
+  <DeliveryManPrefabTr>k__BackingField: {fileID: 1804551726782161218, guid: 83b86944fb722034aaa17f89464e3464, type: 3}
+  <SpawnPoint>k__BackingField: {x: 10, y: -14.4, z: 0}
+  <ParkingPoint>k__BackingField: {x: -2.3, y: -14.4, z: 0}
+  <DeliveryPoint>k__BackingField: {x: 10, y: -14.4, z: 0}
+  <DeliveryMaxLevel>k__BackingField: 50
+  <DeliveryManAddLevels>k__BackingField: 01000000050000000a0000000f00000014000000190000001e00000023000000280000002d00000032000000

@@ -5,8 +5,8 @@ namespace PizzaTower.Characters.Chef
 {
     public class ChefAnimator : MonoBehaviour
     {
-        [field: SerializeField] public Animator Animator { get; private set; }
-        [field: SerializeField] public float TransitionTime { get; private set; }
+        [field: SerializeField] private Animator Animator { get; set; }
+        [field: SerializeField] private float TransitionTime { get; set; }
         private float MovementSpeed { get; set; }
         private float CookSpeed { get; set; }
 

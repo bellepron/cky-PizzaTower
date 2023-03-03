@@ -2,7 +2,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-namespace PizzaTower.Floor
+namespace PizzaTower.Floors
 {
     public class FloorCanvasController : MonoBehaviour
     {

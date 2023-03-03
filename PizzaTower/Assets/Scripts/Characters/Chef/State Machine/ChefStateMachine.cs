@@ -1,6 +1,6 @@
 using cky.StateMachine.Base;
 using PizzaTower.Characters.Chef.States;
-using PizzaTower.Floor;
+using PizzaTower.Floors;
 using UnityEngine;
 
 namespace PizzaTower.Characters.Chef.StateMachine
