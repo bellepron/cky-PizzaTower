@@ -20,14 +20,6 @@ namespace cky.Reuseables.Level
             EventManagerAbstract.GameSuccess += OnGameSuccess;
         }
 
-        private void Start()
-        {
-            _levelIndex = PlayerPrefs.GetInt(PlayerPrefHelper.pPrefsLevelIndex);
-            levelSettings = levels[_levelIndex % levels.Length];
-
-            EventManagerAbstract.GameSuccess += OnGameSuccess;
-        }
-
         private void OnDisable()
         {
             EventManagerAbstract.GameSuccess -= OnGameSuccess;
