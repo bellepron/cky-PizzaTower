@@ -1,6 +1,5 @@
 using CKY.Pooling;
-using PizzaTower.Characters.Chef;
-using PizzaTower.Managers;
+using PizzaTower.Characters.Chef.StateMachine;
 using System.Linq;
 using UnityEngine;
 

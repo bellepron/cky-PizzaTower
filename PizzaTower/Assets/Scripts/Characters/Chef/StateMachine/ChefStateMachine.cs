@@ -3,7 +3,7 @@ using PizzaTower.Characters.Chef.States;
 using PizzaTower.Floor;
 using UnityEngine;
 
-namespace PizzaTower.Characters.Chef
+namespace PizzaTower.Characters.Chef.StateMachine
 {
     public class ChefStateMachine : BaseStateMachine
     {

@@ -1,6 +1,6 @@
 using cky.StateMachine.Base;
 
-namespace PizzaTower.Characters.Chef
+namespace PizzaTower.Characters.Chef.StateMachine
 {
     public abstract class ChefBaseState : BaseState
     {
