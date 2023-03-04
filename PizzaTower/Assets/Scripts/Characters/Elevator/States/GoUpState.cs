@@ -29,7 +29,7 @@ namespace PizzaTower.Characters.Elevator.States
 
             var topY = topFloorSupervisor.PositionY;
 
-            _elevatorTr.position += _direction * stateMachine.UpSpeed * deltaTime;
+            _elevatorTr.position += _direction * stateMachine.ElevatorSettings.UpSpeed * deltaTime;
 
             if (_elevatorTr.position.y >= topY)
             {

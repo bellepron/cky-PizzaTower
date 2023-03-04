@@ -14,7 +14,6 @@ namespace PizzaTower.Characters.Elevator.States
         public override void Enter()
         {
             _elevatorTr = stateMachine.transform;
-
             _targetFloorY = stateMachine.FloorSupervisors[stateMachine.CurrentFloorIndex - 1].PositionY;
         }
 
@@ -25,7 +24,7 @@ namespace PizzaTower.Characters.Elevator.States
 
         public override void Tick(float deltaTime)
         {
-            _elevatorTr.position += _direction * stateMachine.UpSpeed * deltaTime;
+            _elevatorTr.position += _direction * stateMachine.ElevatorSettings.DownSpeed * deltaTime;
 
             if (_elevatorTr.position.y <= _targetFloorY)
             {

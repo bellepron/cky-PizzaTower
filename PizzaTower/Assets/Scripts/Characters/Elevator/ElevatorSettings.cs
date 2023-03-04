@@ -7,5 +7,6 @@ namespace PizzaTower.Characters.Elevator
     {
         [field: SerializeField] public float UpSpeed { get; private set; } = 7;
         [field: SerializeField] public float DownSpeed { get; private set; } = 5;
+        [field: SerializeField] public float DeliveryPointY { get; private set; } = -12.7f;
     }
 }
