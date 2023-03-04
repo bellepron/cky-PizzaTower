@@ -14,6 +14,7 @@ namespace PizzaTower.Floors
         public int FloorOrder { get; set; }
         public ChefSpawner ChefSpawner { get; set; }
 
+
         private int _floorLevel = 1;
 
         private void Start()
