@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de62527832bb9144ab4906892fb295a, type: 3}
   m_Name: Chef 0
   m_EditorClassIdentifier: 
+  <ChefPrefabTr>k__BackingField: {fileID: 3025755011098134997, guid: 8aa975ff8e753bd49b7babd9e8b519e4, type: 3}
+  <ChefsTablePrefabTr>k__BackingField: {fileID: 5358353399570210522, guid: d98ba82c8833522489d3a4b3714d087a, type: 3}
   <MovementSpeed>k__BackingField: 1
   <CookTime>k__BackingField: 10

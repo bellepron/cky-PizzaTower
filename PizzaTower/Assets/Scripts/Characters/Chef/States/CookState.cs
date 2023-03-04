@@ -13,10 +13,7 @@ namespace PizzaTower.Characters.Chef.States
             stateMachine.Animator.Cook();
         }
 
-        public override void Exit()
-        {
-
-        }
+        public override void Exit() { }
 
         public override void Tick(float deltaTime)
         {

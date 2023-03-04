@@ -1,3 +1,4 @@
+using PizzaTower.FloorSupervisor;
 using PizzaTower.Managers;
 using PizzaTower.Spawners;
 using System;
@@ -11,9 +12,9 @@ namespace PizzaTower.Floors
 
         public FloorSettings FloorSettings { get; private set; }
         [field: SerializeField] public FloorCanvasController FloorCanvasController { get; private set; }
+        [field: SerializeField] public FloorSupervisorController FloorSupervisor { get; private set; }
         public int FloorOrder { get; set; }
         public ChefSpawner ChefSpawner { get; set; }
-
 
         private int _floorLevel = 1;
 
@@ -21,7 +22,7 @@ namespace PizzaTower.Floors
         {
             FloorSettings = LevelManager.Instance.levelSettings.FloorSettings;
             FloorCanvasController.Initialize(this);
-            ChefSpawner = new ChefSpawner(this);
+            ChefSpawner = new ChefSpawner(this, FloorSupervisor);
         }
 
         public void UpgradeFloor()

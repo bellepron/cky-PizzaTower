@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <FloorSettings>k__BackingField: {fileID: 11400000, guid: 02657bfd295f83941978c7d221c5388b, type: 2}
   <DeliveryFloorSettings>k__BackingField: {fileID: 11400000, guid: c1203f204d860c749a25df69e374ec7f, type: 2}
+  <ChefSettings>k__BackingField:
+  - {fileID: 11400000, guid: 1c698294e448c5f4db57bfffe8d4fa94, type: 2}
+  - {fileID: 11400000, guid: 6388871dba1a7e149a535f3bd9b83974, type: 2}
+  - {fileID: 11400000, guid: c271657af2f592245ab3e762a2d007a6, type: 2}
   <ElevatorSettings>k__BackingField: {fileID: 11400000, guid: a57ca1886871d394ba39ee4472c5517c, type: 2}
   <DeliveryManSettings>k__BackingField: {fileID: 11400000, guid: 262d9c8796ac4d24da0e86af70250864, type: 2}

@@ -8,17 +8,13 @@ namespace PizzaTower.Characters.Chef.States
 
         public override void Enter()
         {
+            stateMachine.FloorSupervisor.AddPizza(stateMachine.PizzaCapacity);
 
-        }
-
-        public override void Exit()
-        {
-
-        }
-
-        public override void Tick(float deltaTime)
-        {
             stateMachine.SwitchState(new GoToTableState(stateMachine));
         }
+
+        public override void Exit() { }
+
+        public override void Tick(float deltaTime) { }
     }
 }

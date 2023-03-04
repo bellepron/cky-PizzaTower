@@ -1,6 +1,8 @@
 using cky.StateMachine.Base;
 using PizzaTower.Characters.Chef.States;
 using PizzaTower.Floors;
+using PizzaTower.FloorSupervisor;
+using PizzaTower.Managers;
 using UnityEngine;
 
 namespace PizzaTower.Characters.Chef.StateMachine
@@ -9,16 +11,18 @@ namespace PizzaTower.Characters.Chef.StateMachine
     {
         [field: SerializeField] public ChefAnimator Animator { get; private set; }
         public FloorController Floor { get; set; }
+        public IFloorSupervisor FloorSupervisor { get; set; }
         public float MovementSpeed { get; set; }
         public float CookTime { get; set; }
+        public int PizzaCapacity { get; set; }
         public Vector3 TableLocalPosition { get; set; }
         public float ChefDeliveryPointX { get; set; }
         private float InitMovementSpeed { get; set; }
         private float InitCookTime { get; set; }
 
-        public void Initialize(FloorController floor, FloorSettings floorSettings, int orderInFloor, Vector3 tableLocalPosition)
+        public void Initialize(FloorController floor, int orderInFloor, Vector3 tableLocalPosition, IFloorSupervisor floorSupervisor)
         {
-            SetVariables(floor, floorSettings, orderInFloor, tableLocalPosition);
+            SetVariables(floor, orderInFloor, tableLocalPosition, floorSupervisor);
             ChangeSortingLayer(orderInFloor);
             InitializeAnimator();
 
@@ -27,15 +31,18 @@ namespace PizzaTower.Characters.Chef.StateMachine
             floor.UpgradeEvent += Upgrade;
         }
 
-        private void SetVariables(FloorController floor, FloorSettings floorSettings, int orderInFloor, Vector3 tableLocalPosition)
+        private void SetVariables(FloorController floor, int orderInFloor, Vector3 tableLocalPosition, IFloorSupervisor floorSupervisor)
         {
             Floor = floor;
 
-            var chefSettings = floorSettings.ChefSettings[orderInFloor];
+            var levelSettings = LevelManager.Instance.levelSettings;
+            var chefSettings = levelSettings.ChefSettings[orderInFloor];
             InitMovementSpeed = MovementSpeed = chefSettings.MovementSpeed;
             InitCookTime = CookTime = chefSettings.CookTime;
+            PizzaCapacity = chefSettings.PizzaCapacity;
             TableLocalPosition = tableLocalPosition;
-            ChefDeliveryPointX = floorSettings.ChefDeliveryPointX;
+            ChefDeliveryPointX = Floor.FloorSettings.ChefDeliveryPointX;
+            FloorSupervisor = floorSupervisor;
         }
 
         private void ChangeSortingLayer(int orderInFloor)

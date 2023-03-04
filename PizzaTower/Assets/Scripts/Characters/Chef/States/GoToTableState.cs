@@ -33,7 +33,7 @@ namespace PizzaTower.Characters.Chef.States
         {
             _direction = _chefTr.LocalUnitDirectionX(_tableLocalPosition);
 
-            _chefTr.transform.localPosition += _direction * stateMachine.MovementSpeed * deltaTime;
+            _chefTr.localPosition += _direction * stateMachine.MovementSpeed * deltaTime;
 
             if (Mathf.Abs(_tableLocalPosition.x - _chefTr.localPosition.x) < 0.1f)
             {

@@ -1,6 +1,9 @@
 using CKY.Pooling;
+using PizzaTower.Characters.Chef;
 using PizzaTower.Characters.Chef.StateMachine;
 using PizzaTower.Floors;
+using PizzaTower.FloorSupervisor;
+using PizzaTower.Managers;
 using System.Linq;
 using UnityEngine;
 
@@ -9,21 +12,22 @@ namespace PizzaTower.Spawners
     public class ChefSpawner
     {
         private FloorController _floor;
+        private IFloorSupervisor _floorSupervisor;
         private Transform _floorTransform;
         private FloorSettings _floorSettings;
         private Vector3[] _chefSpawnLocalPositions;
-        private Transform _chefPrefabTr;
-        private Transform _chefsTablePrefabTr;
+        private ChefSettings[] _chefSettings;
         private int _chefCount;
 
-        public ChefSpawner(FloorController floor)
+        public ChefSpawner(FloorController floor, FloorSupervisorController floorSupervisor)
         {
             _floor = floor;
+            _floorSupervisor = floorSupervisor.GetComponent<IFloorSupervisor>();
             _floorTransform = floor.transform;
             _floorSettings = floor.FloorSettings;
             _chefSpawnLocalPositions = _floorSettings.ChefSpawnLocalPositions;
-            _chefPrefabTr = _floorSettings.ChefPrefabTr;
-            _chefsTablePrefabTr = _floorSettings.ChefsTablePrefabTr;
+
+            _chefSettings = LevelManager.Instance.levelSettings.ChefSettings;
 
             floor.UpgradeEvent += Upgrade;
 
@@ -39,34 +43,28 @@ namespace PizzaTower.Spawners
 
         public void Spawn()
         {
-            if (_chefCount >= _chefSpawnLocalPositions.Length)
-            {
-                Debug.LogWarning($"Maximum number of chefs reached!");
-
-                return;
-            }
-
-            var spawnPos = _chefSpawnLocalPositions[_chefCount];
-            CreateChef(spawnPos);
-            CreateChefsTable(spawnPos);
+            CreateChef();
+            CreateChefsTable();
 
             _chefCount++;
         }
 
-        private void CreateChef(Vector3 spawnPos)
+        private void CreateChef()
         {
-            var chefTr = PoolManager.Instance.Spawn(_chefPrefabTr, spawnPos, Quaternion.identity).transform;
+            var pos = _chefSpawnLocalPositions[_chefCount];
+            var chefTr = PoolManager.Instance.Spawn(_chefSettings[_chefCount].ChefPrefabTr, pos, Quaternion.identity).transform;
             chefTr.parent = _floorTransform;
-            chefTr.localPosition = spawnPos;
+            chefTr.localPosition = pos;
             var chefSM = chefTr.GetComponent<ChefStateMachine>();
-            chefSM.Initialize(_floor, _floorSettings, _chefCount, spawnPos);
+            chefSM.Initialize(_floor, _chefCount, pos, _floorSupervisor);
         }
 
-        private void CreateChefsTable(Vector3 spawnPos)
+        private void CreateChefsTable()
         {
-            var chefsTableTr = PoolManager.Instance.Spawn(_chefsTablePrefabTr, spawnPos, Quaternion.identity).transform;
+            var pos = _chefSpawnLocalPositions[_chefCount];
+            var chefsTableTr = PoolManager.Instance.Spawn(_chefSettings[_chefCount].ChefsTablePrefabTr, pos, Quaternion.identity).transform;
             chefsTableTr.parent = this._floorTransform;
-            chefsTableTr.localPosition = spawnPos;
+            chefsTableTr.localPosition = pos;
         }
     }
 }
