@@ -802,13 +802,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5137368509567085142, guid: 17e6c43d56fe0754c8a79446e68b9f97, type: 3}
+      propertyPath: m_Name
+      value: Red Button - Add Floor Button
+      objectReference: {fileID: 0}
     - target: {fileID: 6312992877154707581, guid: 17e6c43d56fe0754c8a79446e68b9f97, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6753839010826109370, guid: 17e6c43d56fe0754c8a79446e68b9f97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6753839010826109370, guid: 17e6c43d56fe0754c8a79446e68b9f97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -881,6 +885,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 578835682092329766, guid: 17e6c43d56fe0754c8a79446e68b9f97, type: 3}
   m_PrefabInstance: {fileID: 3640582162640002745}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8488840274401948911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5137368509567085142, guid: 17e6c43d56fe0754c8a79446e68b9f97, type: 3}
+  m_PrefabInstance: {fileID: 3640582162640002745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &895820307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488840274401948911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13c134c9035b9a4cb498c3cc7e231ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3640582163243926453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -888,6 +909,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3640582163731164335}
     m_Modifications:
+    - target: {fileID: 6628829709213508151, guid: bdb91c10ce05f2541bbfda8ee510ef83, type: 3}
+      propertyPath: m_text
+      value: Add New Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 8159673524795263502, guid: bdb91c10ce05f2541bbfda8ee510ef83, type: 3}
       propertyPath: m_text
       value: Add New Floor

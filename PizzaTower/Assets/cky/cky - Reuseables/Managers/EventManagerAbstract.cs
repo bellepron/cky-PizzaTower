@@ -9,7 +9,7 @@ namespace cky.Reuseables.Managers
 
         protected override void OnPerAwake() => ResetEvents();
 
-        private void ResetEvents()
+        protected virtual void ResetEvents()
         {
             //UpdateEvent = null;
             GameEnd = null;
