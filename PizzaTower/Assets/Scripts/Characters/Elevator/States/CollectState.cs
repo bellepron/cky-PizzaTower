@@ -32,7 +32,6 @@ namespace PizzaTower.Characters.Elevator.States
                     {
                         if (stateMachine.CollectedPizzaCount == 0)
                         {
-                            Debug.Log("Nothing Collected! Go Up Again!");
                             stateMachine.SwitchState(new GoUpState(stateMachine));
 
                             break;
