@@ -13,7 +13,6 @@ namespace PizzaTower.Characters.Chef.StateMachine
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
         [field: SerializeField] private Transform CollectTransform { get; set; }
         public FloorController Floor { get; set; }
-        public IPizzaHolder FloorSupervisor { get; set; }
         public float MovementSpeed { get; set; }
         public float CookTime { get; set; }
         public int PizzaCapacity { get; set; }
@@ -45,7 +44,6 @@ namespace PizzaTower.Characters.Chef.StateMachine
             PizzaCapacity = chefSettings.PizzaCapacity;
             TableLocalPosition = tableLocalPosition;
             ChefDeliveryPointX = Floor.FloorSettings.ChefDeliveryPointX;
-            FloorSupervisor = floorSupervisor;
         }
 
         private void ChangeSortingLayer(int orderInFloor)

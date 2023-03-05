@@ -19,16 +19,13 @@ namespace PizzaTower.Characters.Elevator.States
                 {
                     stateMachine.CurrentFloorIndex = i;
 
-                    stateMachine.AddPizza(stateMachine.FloorSupervisors[i].PizzaCount);
+                    stateMachine.EventManager.TriggerAddPizzaToElevator(stateMachine.FloorSupervisors[i]);
                     stateMachine.FloorSupervisors[i].RemovePizzas();
-
-                    //if (stateMachine.PizzaCount > 0)
-                    //    stateMachine.PizzaModel.SetActive(true);
-
-                    // Animation;
 
                     if (i > 0)
                     {
+                        // Animation;
+
                         stateMachine.SwitchState(new GoDownState(stateMachine));
                         break;
                     }

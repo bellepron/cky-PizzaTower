@@ -1,8 +1,9 @@
+using cky.Reuseables.Managers;
 using cky.StateMachine.Base;
 using PizzaTower.Characters.Elevator.States;
 using PizzaTower.Interfaces;
-using PizzaTower.Characters.ParkSupervisor;
 using PizzaTower.Managers;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace PizzaTower.Characters.Elevator.StateMachine
         [field: SerializeField] public GameObject PizzaModel { get; }
         [field: SerializeField] private Transform CollectTransform { get; set; }
         public List<IPizzaHolder> FloorSupervisors { get; set; } = new List<IPizzaHolder>();
-        public IPizzaHolder ParkSupervisor { get; set; }
+        public EventManager EventManager { get; set; }
         public int CurrentFloorIndex { get; set; }
         public float UpSpeed { get; set; }
         public float DownSpeed { get; set; }
@@ -24,9 +25,9 @@ namespace PizzaTower.Characters.Elevator.StateMachine
         public void Initialize()
         {
             transform.parent = null;
-            //PizzaModel.SetActive(false);
 
-            EventManager.AddFloorToElevatorEvent += AddFloor;
+            EventManager.AddFloorSupervisorToElevator += AddFloorSupervisor;
+            EventManager.AddPizzaToElevator += AddPizzaFromFloorSupervisor;
 
             GetVariables();
 
@@ -36,13 +37,18 @@ namespace PizzaTower.Characters.Elevator.StateMachine
         private void GetVariables()
         {
             ElevatorSettings = LevelManager.Instance.levelSettings.ElevatorSettings;
-            ParkSupervisor = ParkSupervisorController.Instance.GetComponent<IPizzaHolder>();
+            EventManager = (EventManager)EventManagerAbstract.Instance;
             DeliveryPointY = ElevatorSettings.DeliveryPointY;
         }
 
-        private void AddFloor(IPizzaHolder floorSupervisor)
+        private void AddFloorSupervisor(IPizzaHolder floorSupervisor)
         {
             FloorSupervisors.Add(floorSupervisor);
+        }
+
+        private void AddPizzaFromFloorSupervisor(IPizzaHolder floorSupervisor)
+        {
+            PizzaCount += floorSupervisor.PizzaCount;
         }
 
         private void InitState()
@@ -53,8 +59,6 @@ namespace PizzaTower.Characters.Elevator.StateMachine
         public Vector3 GetPosition() => transform.position;
 
         public Vector3 GetCollectPoint() => CollectTransform.position;
-
-        public void AddPizza(int value) => PizzaCount += value;
 
         public void RemovePizzas() => PizzaCount = 0;
     }

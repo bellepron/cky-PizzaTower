@@ -7,7 +7,6 @@ namespace PizzaTower.Interfaces
         public int PizzaCount { get; set; }
         Vector3 GetPosition();
         Vector3 GetCollectPoint();
-        void AddPizza(int value);
         void RemovePizzas();
     }
 }

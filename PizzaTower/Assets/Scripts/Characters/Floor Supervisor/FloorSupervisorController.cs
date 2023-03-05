@@ -1,3 +1,4 @@
+using PizzaTower.Floors;
 using PizzaTower.Interfaces;
 using PizzaTower.Managers;
 using UnityEngine;
@@ -14,14 +15,23 @@ namespace PizzaTower.Characters.FloorSupervisor
 
         public Vector3 GetCollectPoint() => CollectTransform.position;
 
-        public void AddPizza(int value) => PizzaCount += value;
-
         public void RemovePizzas() => PizzaCount = 0;
 
         private void Start()
         {
             var eventManager = (EventManager)EventManager.Instance;
-            eventManager.TriggerAddFloorToElevatorEvent(this);
+            eventManager.TriggerAddFloorSupervisorToElevator(this);
+        }
+
+        public void SubscribeToPizzaDeliveredEvent(FloorController floor)
+        {
+            floor.AddPizzaToFloorSupervisor += AddPizza;
+        }
+
+        private void AddPizza(IPizzaHolder chef)
+        {
+            PizzaCount += chef.PizzaCount;
+            Debug.Log(PizzaCount);
         }
     }
 }

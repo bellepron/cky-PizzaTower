@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Delivery Man
   m_EditorClassIdentifier: 
   <MovementSpeed>k__BackingField: 2
-  <GettingDeliveryTime>k__BackingField: 1
+  <GettingDeliveryTime>k__BackingField: 0.1
   <Capacity>k__BackingField: 10

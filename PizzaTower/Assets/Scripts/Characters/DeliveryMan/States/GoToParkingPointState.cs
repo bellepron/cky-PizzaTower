@@ -1,6 +1,5 @@
 using cky.Reuseables.Extension;
 using PizzaTower.Characters.DeliveryMan.StateMachine;
-using System;
 using UnityEngine;
 
 namespace PizzaTower.Characters.DeliveryMan.States
@@ -10,14 +9,12 @@ namespace PizzaTower.Characters.DeliveryMan.States
         Transform _deliveryManTr;
         Vector3 _parkPoint;
         Vector3 _direction;
-        SpriteRenderer _spriteRenderer;
 
         public GoToParkingPointState(DeliveryManStateMachine stateMachine) : base(stateMachine) { }
 
         public override void Enter()
         {
-            _spriteRenderer = stateMachine.GetComponent<SpriteRenderer>();
-            _spriteRenderer.flipX = true;
+            stateMachine.SpriteRenderer.flipX = true;
 
             _deliveryManTr = stateMachine.transform;
             _parkPoint = stateMachine.ParkingPoint;
@@ -25,7 +22,7 @@ namespace PizzaTower.Characters.DeliveryMan.States
 
         public override void Exit()
         {
-            _spriteRenderer.flipX = false;
+            stateMachine.SpriteRenderer.flipX = false;
         }
 
         public override void Tick(float deltaTime)
@@ -47,18 +44,7 @@ namespace PizzaTower.Characters.DeliveryMan.States
 
         private void ArrivedToTheParkPoint()
         {
-            var pizzaCountAtParkSupervisor = stateMachine.ParkSupervisor.PizzaCount;
-
-            if (pizzaCountAtParkSupervisor >= stateMachine.Capacity)
-            {
-                stateMachine.ParkSupervisor.AddPizza(-stateMachine.Capacity);
-                stateMachine.AddPizza(stateMachine.Capacity);
-            }
-            else
-            {
-                stateMachine.ParkSupervisor.AddPizza(-pizzaCountAtParkSupervisor);
-                stateMachine.AddPizza(pizzaCountAtParkSupervisor);
-            }
+            stateMachine.EventManager.TriggerDeliveryManArrivedToParkSupervisor(stateMachine, stateMachine.Capacity);
 
             stateMachine.SwitchState(new GetDeliveryState(stateMachine));
         }

@@ -17,7 +17,7 @@ namespace PizzaTower.Managers
 
             UpdateCoinText();
 
-            EventManager.UpdateCoinEvent += UpdateCoin;
+            EventManager.UpdateCoin += UpdateCoin;
         }
 
         private void UpdateCoin(int value)

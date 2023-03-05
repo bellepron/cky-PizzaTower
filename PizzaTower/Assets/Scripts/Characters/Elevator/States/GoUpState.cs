@@ -31,7 +31,6 @@ namespace PizzaTower.Characters.Elevator.States
                 var supervisor = stateMachine.FloorSupervisors[i];
                 if (supervisor.PizzaCount > 0)
                 {
-                    Debug.Log("dolu.");
                     _targetY = supervisor.GetPosition().y;
                     break;
                 }
