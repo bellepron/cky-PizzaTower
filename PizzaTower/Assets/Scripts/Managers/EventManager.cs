@@ -8,7 +8,7 @@ namespace PizzaTower.Managers
     {
         public static event Action AddFloorEvent;
         public static event Action<IPizzaHolder> AddFloorToElevatorEvent;
-        public static event Action<int> UpdateMoneyEvent;
+        public static event Action<int> UpdateCoinEvent;
 
         protected override void ResetEvents()
         {
@@ -16,11 +16,11 @@ namespace PizzaTower.Managers
 
             AddFloorEvent = null;
             AddFloorToElevatorEvent = null;
-            UpdateMoneyEvent = null;
+            UpdateCoinEvent = null;
         }
 
         public void TriggerAddFloorEvent() => AddFloorEvent?.Invoke();
         public void TriggerAddFloorToElevatorEvent(IPizzaHolder i) => AddFloorToElevatorEvent?.Invoke(i);
-        public void TriggerUpdateMoneyEvent(int value) => UpdateMoneyEvent?.Invoke(value);
+        public void TriggerUpdateCoinEvent(int value) => UpdateCoinEvent?.Invoke(value);
     }
 }

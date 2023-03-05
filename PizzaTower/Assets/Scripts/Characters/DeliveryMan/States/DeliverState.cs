@@ -8,7 +8,7 @@ namespace PizzaTower.Characters.DeliveryMan.States
 
         public override void Enter()
         {
-            stateMachine.EventManager.TriggerUpdateMoneyEvent(stateMachine.PizzaCount);
+            stateMachine.EventManager.TriggerUpdateCoinEvent(stateMachine.PizzaCount);
             stateMachine.SwitchState(new GoToParkingPointState(stateMachine));
         }
 

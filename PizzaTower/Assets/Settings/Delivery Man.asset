@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155edffc10b4d514f8e41430b7d47126, type: 3}
   m_Name: Delivery Man
   m_EditorClassIdentifier: 
-  <MovementSpeed>k__BackingField: 1.5
+  <MovementSpeed>k__BackingField: 2
   <GettingDeliveryTime>k__BackingField: 1
   <Capacity>k__BackingField: 10
