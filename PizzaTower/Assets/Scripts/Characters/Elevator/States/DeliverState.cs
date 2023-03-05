@@ -1,4 +1,5 @@
 using PizzaTower.Characters.Elevator.StateMachine;
+using PizzaTower.Characters.ParkSupervisor;
 using UnityEngine;
 
 namespace PizzaTower.Characters.Elevator.States
@@ -37,8 +38,9 @@ namespace PizzaTower.Characters.Elevator.States
         private void ArrivedToTheDeliveryPoint()
         {
             // TODO: Give Pizzas to ParkingSupervisor
-            stateMachine.CollectedPizzaCount = 0;
-            stateMachine.PizzaModel.SetActive(false);
+            stateMachine.ParkSupervisor.AddPizza(stateMachine.PizzaCount);
+            stateMachine.RemovePizzas();
+            //stateMachine.PizzaModel.SetActive(false);
 
             stateMachine.SwitchState(new GoUpState(stateMachine));
         }

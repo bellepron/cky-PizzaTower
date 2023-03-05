@@ -14,7 +14,7 @@ namespace PizzaTower.Characters.Elevator.States
         public override void Enter()
         {
             _elevatorTr = stateMachine.transform;
-            _targetFloorY = stateMachine.FloorSupervisors[stateMachine.CurrentFloorIndex - 1].PositionY;
+            _targetFloorY = stateMachine.FloorSupervisors[stateMachine.CurrentFloorIndex - 1].GetPosition().y;
         }
 
         public override void Exit()

@@ -23,7 +23,7 @@ namespace PizzaTower.Managers
 
             //SetTopFloorPosition(_floorStartPos);
 
-            EventManager.AddFloor += AddFloor;
+            EventManager.AddFloorEvent += AddFloor;
         }
 
         private void GetVariables()

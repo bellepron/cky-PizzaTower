@@ -1,4 +1,4 @@
-using PizzaTower.FloorSupervisor;
+using PizzaTower.Characters.FloorSupervisor;
 using PizzaTower.Managers;
 using PizzaTower.Spawners;
 using System;

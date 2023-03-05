@@ -20,7 +20,10 @@ namespace PizzaTower.Characters.Chef.States
             _chefDeliveryPoint = new Vector3(stateMachine.ChefDeliveryPointX, _chefTr.localPosition.y, 0);
         }
 
-        public override void Exit() { }
+        public override void Exit()
+        {
+
+        }
 
         public override void Tick(float deltaTime)
         {
@@ -30,9 +33,13 @@ namespace PizzaTower.Characters.Chef.States
 
             if (Mathf.Abs(_chefDeliveryPoint.x - _chefTr.localPosition.x) < 0.1f)
             {
-                _chefTr.localPosition = _chefDeliveryPoint;
-                stateMachine.SwitchState(new DeliverState(stateMachine));
+                ArrivedToTheDeliveryPoint();
             }
+        }
+
+        private void ArrivedToTheDeliveryPoint()
+        {
+            stateMachine.SwitchState(new DeliverState(stateMachine));
         }
     }
 }

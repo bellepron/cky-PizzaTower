@@ -13,15 +13,23 @@ namespace PizzaTower.Characters.Chef.States
             stateMachine.Animator.Cook();
         }
 
-        public override void Exit() { }
+        public override void Exit()
+        {
+            stateMachine.AddPizza(stateMachine.PizzaCapacity);
+        }
 
         public override void Tick(float deltaTime)
         {
             _timeCounter += deltaTime;
             if (_timeCounter >= stateMachine.CookTime)
             {
-                stateMachine.SwitchState(new GoToDeliveryPointState(stateMachine));
+                FinishCooking();
             }
+        }
+
+        private void FinishCooking()
+        {
+            stateMachine.SwitchState(new GoToDeliveryPointState(stateMachine));
         }
     }
 }

@@ -15,16 +15,15 @@ namespace PizzaTower.Characters.Elevator.States
 
             for (int i = stateMachine.FloorSupervisors.Count - 1; i >= 0; i--)
             {
-                if (_elevatorTr.position.y == stateMachine.FloorSupervisors[i].PositionY)
+                if (_elevatorTr.position.y == stateMachine.FloorSupervisors[i].GetPosition().y)
                 {
                     stateMachine.CurrentFloorIndex = i;
 
-                    var numberOfPizzaWillCollect = stateMachine.FloorSupervisors[i].PizzaCount;
-                    stateMachine.CollectedPizzaCount += numberOfPizzaWillCollect;
+                    stateMachine.AddPizza(stateMachine.FloorSupervisors[i].PizzaCount);
                     stateMachine.FloorSupervisors[i].RemovePizzas();
 
-                    if (stateMachine.CollectedPizzaCount > 0)
-                        stateMachine.PizzaModel.SetActive(true);
+                    //if (stateMachine.PizzaCount > 0)
+                    //    stateMachine.PizzaModel.SetActive(true);
 
                     // Animation;
 
@@ -35,7 +34,7 @@ namespace PizzaTower.Characters.Elevator.States
                     }
                     else
                     {
-                        if (stateMachine.CollectedPizzaCount == 0)
+                        if (stateMachine.PizzaCount == 0)
                         {
                             stateMachine.SwitchState(new GoUpState(stateMachine));
                             break;

@@ -1,16 +1,22 @@
-using cky.Reuseables.Level;
+using cky.Reuseables.Managers;
 using cky.StateMachine.Base;
 using PizzaTower.Characters.DeliveryMan.States;
+using PizzaTower.Interfaces;
+using PizzaTower.Characters.ParkSupervisor;
 using PizzaTower.Floors;
+using PizzaTower.Managers;
 using UnityEngine;
 
 namespace PizzaTower.Characters.DeliveryMan.StateMachine
 {
-    public class DeliveryManStateMachine : BaseStateMachine
+    public class DeliveryManStateMachine : BaseStateMachine, IPizzaHolder
     {
         [field: SerializeField] private DeliveryManAnimator DeliveryManAnimator { get; set; }
         private DeliveryManSettings DeliveryManSettings { get; set; }
         private DeliveryFloorSettings DeliveryFloorSettings { get; set; }
+        public EventManager EventManager { get; set; }
+        [field: SerializeField] private Transform CollectTransform { get; set; }
+        public IPizzaHolder ParkSupervisor { get; set; }
         public Vector3 ParkingPoint { get; set; }
         public Vector3 DeliveryPoint { get; set; }
         public float MovementSpeed { get; set; }
@@ -19,6 +25,7 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
         private float InitMovementSpeed { get; set; }
         private float InitGettingDeliveryTime { get; set; }
         private int InitCapacity { get; set; }
+        public int PizzaCount { get; set; }
 
         public void Initialize(DeliveryManSettings deliveryManSettings, DeliveryFloorSettings deliveryFloorSettings, int order)
         {
@@ -39,6 +46,8 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
             InitCapacity = Capacity = deliveryManSettings.Capacity;
             ParkingPoint = DeliveryFloorSettings.ParkingPoint;
             DeliveryPoint = DeliveryFloorSettings.DeliveryPoint;
+            ParkSupervisor = ParkSupervisorController.Instance.GetComponent<IPizzaHolder>();
+            EventManager = (EventManager)EventManagerAbstract.Instance;
         }
 
         private void ChangeSortingLayer(int order)
@@ -61,5 +70,13 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
 
             DeliveryManAnimator?.UpdateValues(MovementSpeed);
         }
+
+        public Vector3 GetPosition() => transform.position;
+
+        public Vector3 GetCollectPoint() => CollectTransform.position;
+
+        public void AddPizza(int value) => PizzaCount += value;
+
+        public void RemovePizzas() => PizzaCount = 0;
     }
 }

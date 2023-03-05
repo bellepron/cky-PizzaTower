@@ -182,8 +182,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 655613347
-  m_SortingLayer: 3
+  m_SortingLayerID: 886951461
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 361e3e093e10b0e4f911dec7fe00f0d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 524121734042192598}
   elevatorPoleStartTr: {fileID: 0}
-  elevatorPoleFinishTr: {fileID: 0}
+  elevatorPoleFinishTr: {fileID: 108202112786280839}
 --- !u!120 &524121734042192598
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2945202146628238523}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 0
@@ -262,7 +262,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: b5b30e03253d1bf4c8b776f9c4666724, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: 
-  <PizzaModel>k__BackingField: {fileID: 2945202146405654602}
+  <CollectTransform>k__BackingField: {fileID: 2945202146405654601}
 --- !u!1 &7309749341759428979
 GameObject:
   m_ObjectHideFlags: 0

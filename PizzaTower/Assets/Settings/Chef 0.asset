@@ -16,3 +16,4 @@ MonoBehaviour:
   <ChefsTablePrefabTr>k__BackingField: {fileID: 5358353399570210522, guid: d98ba82c8833522489d3a4b3714d087a, type: 3}
   <MovementSpeed>k__BackingField: 1
   <CookTime>k__BackingField: 10
+  <PizzaCapacity>k__BackingField: 3

@@ -1,5 +1,6 @@
 using cky.Reuseables.Extension;
 using PizzaTower.Characters.DeliveryMan.StateMachine;
+using System;
 using UnityEngine;
 
 namespace PizzaTower.Characters.DeliveryMan.States
@@ -32,8 +33,14 @@ namespace PizzaTower.Characters.DeliveryMan.States
             if (Mathf.Abs(_deliveryPoint.x - _deliveryManTr.position.x) < 0.1f)
             {
                 _deliveryManTr.position = _deliveryPoint;
-                stateMachine.SwitchState(new DeliverState(stateMachine));
+
+                ArrivedToTheDeliveryPoint();
             }
+        }
+
+        private void ArrivedToTheDeliveryPoint()
+        {
+            stateMachine.SwitchState(new DeliverState(stateMachine));
         }
     }
 }

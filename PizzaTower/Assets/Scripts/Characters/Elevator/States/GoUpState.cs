@@ -1,5 +1,4 @@
 using PizzaTower.Characters.Elevator.StateMachine;
-using System.Linq;
 using UnityEngine;
 
 namespace PizzaTower.Characters.Elevator.States
@@ -8,6 +7,7 @@ namespace PizzaTower.Characters.Elevator.States
     {
         Transform _elevatorTr;
         Vector3 _direction = Vector3.up;
+        float _targetY;
 
         public GoUpState(ElevatorStateMachine stateMachine) : base(stateMachine) { }
 
@@ -23,17 +23,28 @@ namespace PizzaTower.Characters.Elevator.States
 
         public override void Tick(float deltaTime)
         {
-            if (stateMachine.FloorSupervisors.Count == 0) return;
+            if (stateMachine.FloorSupervisors.Count == 0)
+                return;
 
-            var topFloorSupervisor = stateMachine.FloorSupervisors.Last();
+            for (int i = stateMachine.FloorSupervisors.Count - 1; i >= 0; i--)
+            {
+                var supervisor = stateMachine.FloorSupervisors[i];
+                if (supervisor.PizzaCount > 0)
+                {
+                    Debug.Log("dolu.");
+                    _targetY = supervisor.GetPosition().y;
+                    break;
+                }
 
-            var topY = topFloorSupervisor.PositionY;
+                if (i == 0)
+                    return;
+            }
 
             _elevatorTr.position += _direction * stateMachine.ElevatorSettings.UpSpeed * deltaTime;
 
-            if (_elevatorTr.position.y >= topY)
+            if (_elevatorTr.position.y >= _targetY)
             {
-                _elevatorTr.position = new Vector3(_elevatorTr.position.x, topY, 0);
+                _elevatorTr.position = new Vector3(_elevatorTr.position.x, _targetY, 0);
 
                 stateMachine.SwitchState(new CollectState(stateMachine));
             }

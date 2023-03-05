@@ -8,7 +8,8 @@ namespace PizzaTower.Characters.Chef.States
 
         public override void Enter()
         {
-            stateMachine.FloorSupervisor.AddPizza(stateMachine.PizzaCapacity);
+            stateMachine.FloorSupervisor.AddPizza(stateMachine.PizzaCount);
+            stateMachine.RemovePizzas();
 
             stateMachine.SwitchState(new GoToTableState(stateMachine));
         }

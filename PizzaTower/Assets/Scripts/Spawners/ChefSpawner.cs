@@ -1,8 +1,9 @@
 using CKY.Pooling;
 using PizzaTower.Characters.Chef;
 using PizzaTower.Characters.Chef.StateMachine;
+using PizzaTower.Characters.FloorSupervisor;
+using PizzaTower.Interfaces;
 using PizzaTower.Floors;
-using PizzaTower.FloorSupervisor;
 using PizzaTower.Managers;
 using System.Linq;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace PizzaTower.Spawners
     public class ChefSpawner
     {
         private FloorController _floor;
-        private IFloorSupervisor _floorSupervisor;
+        private IPizzaHolder _floorSupervisor;
         private Transform _floorTransform;
         private FloorSettings _floorSettings;
         private Vector3[] _chefSpawnLocalPositions;
@@ -22,7 +23,7 @@ namespace PizzaTower.Spawners
         public ChefSpawner(FloorController floor, FloorSupervisorController floorSupervisor)
         {
             _floor = floor;
-            _floorSupervisor = floorSupervisor.GetComponent<IFloorSupervisor>();
+            _floorSupervisor = floorSupervisor.GetComponent<IPizzaHolder>();
             _floorTransform = floor.transform;
             _floorSettings = floor.FloorSettings;
             _chefSpawnLocalPositions = _floorSettings.ChefSpawnLocalPositions;

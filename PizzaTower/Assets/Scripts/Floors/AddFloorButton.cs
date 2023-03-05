@@ -18,7 +18,7 @@ namespace PizzaTower.Floors
 
         private void AddFloor()
         {
-            _eventManager.AddFloorEvent();
+            _eventManager.TriggerAddFloorEvent();
         }
     }
 }

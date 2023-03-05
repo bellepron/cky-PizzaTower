@@ -1198,7 +1198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7636095003898093631, guid: 0b8304dac28756d4ca182a74ae71810d, type: 3}
       propertyPath: m_Name
-      value: Parking Manager
+      value: Park Supervisor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b8304dac28756d4ca182a74ae71810d, type: 3}

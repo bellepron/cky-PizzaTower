@@ -1,11 +1,12 @@
 using UnityEngine;
 
-namespace PizzaTower.FloorSupervisor
+namespace PizzaTower.Interfaces
 {
-    public interface IFloorSupervisor
+    public interface IPizzaHolder
     {
-        public float PositionY { get; set; }
         public int PizzaCount { get; set; }
+        Vector3 GetPosition();
+        Vector3 GetCollectPoint();
         void AddPizza(int value);
         void RemovePizzas();
     }

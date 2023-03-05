@@ -9,14 +9,12 @@ namespace PizzaTower.Characters.Chef.States
         Transform _chefTr;
         Vector3 _tableLocalPosition;
         Vector3 _direction;
-        SpriteRenderer _spriteRenderer;
 
         public GoToTableState(ChefStateMachine stateMachine) : base(stateMachine) { }
 
         public override void Enter()
         {
-            _spriteRenderer = stateMachine.GetComponent<SpriteRenderer>();
-            _spriteRenderer.flipX = true;
+            stateMachine.SpriteRenderer.flipX = true;
 
             stateMachine.Animator.Walk();
 
@@ -26,7 +24,7 @@ namespace PizzaTower.Characters.Chef.States
 
         public override void Exit()
         {
-            _spriteRenderer.flipX = false;
+            stateMachine.SpriteRenderer.flipX = false;
         }
 
         public override void Tick(float deltaTime)

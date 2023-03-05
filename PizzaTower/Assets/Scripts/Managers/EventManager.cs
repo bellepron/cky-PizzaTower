@@ -1,23 +1,26 @@
 using cky.Reuseables.Managers;
-using PizzaTower.FloorSupervisor;
+using PizzaTower.Interfaces;
 using System;
 
 namespace PizzaTower.Managers
 {
     public class EventManager : EventManagerAbstract
     {
-        public static event Action AddFloor;
-        public static event Action<IFloorSupervisor> AddFloorToElevator;
+        public static event Action AddFloorEvent;
+        public static event Action<IPizzaHolder> AddFloorToElevatorEvent;
+        public static event Action<int> UpdateMoneyEvent;
 
         protected override void ResetEvents()
         {
             base.ResetEvents();
 
-            AddFloor = null;
-            AddFloorToElevator = null;
+            AddFloorEvent = null;
+            AddFloorToElevatorEvent = null;
+            UpdateMoneyEvent = null;
         }
 
-        public void AddFloorEvent() => AddFloor?.Invoke();
-        public void AddFloorToElevatorEvent(IFloorSupervisor i) => AddFloorToElevator?.Invoke(i);
+        public void TriggerAddFloorEvent() => AddFloorEvent?.Invoke();
+        public void TriggerAddFloorToElevatorEvent(IPizzaHolder i) => AddFloorToElevatorEvent?.Invoke(i);
+        public void TriggerUpdateMoneyEvent(int value) => UpdateMoneyEvent?.Invoke(value);
     }
 }

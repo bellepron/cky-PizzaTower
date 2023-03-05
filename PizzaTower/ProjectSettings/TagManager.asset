@@ -53,6 +53,9 @@ TagManager:
   - name: Staff
     uniqueID: 4166082401
     locked: 0
+  - name: Pizza
+    uniqueID: 886951461
+    locked: 0
   - name: ParkingPos
     uniqueID: 3197499923
     locked: 0

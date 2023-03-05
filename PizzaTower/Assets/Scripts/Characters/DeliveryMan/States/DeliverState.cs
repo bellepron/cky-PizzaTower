@@ -4,13 +4,12 @@ namespace PizzaTower.Characters.DeliveryMan.States
 {
     public class DeliverState : DeliveryManBaseState
     {
-        public DeliverState(DeliveryManStateMachine stateMachine) : base(stateMachine)
-        {
-        }
+        public DeliverState(DeliveryManStateMachine stateMachine) : base(stateMachine) { }
 
         public override void Enter()
         {
-
+            stateMachine.EventManager.TriggerUpdateMoneyEvent(stateMachine.PizzaCount);
+            stateMachine.SwitchState(new GoToParkingPointState(stateMachine));
         }
 
         public override void Exit()
@@ -20,7 +19,7 @@ namespace PizzaTower.Characters.DeliveryMan.States
 
         public override void Tick(float deltaTime)
         {
-            stateMachine.SwitchState(new GoToParkingPointState(stateMachine));
+
         }
     }
 }
