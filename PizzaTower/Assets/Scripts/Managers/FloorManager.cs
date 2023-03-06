@@ -14,7 +14,6 @@ namespace PizzaTower.Managers
         private Vector3 _floorStartPos;
         private Vector3 _increaseQuantityOfFloor;
         private Vector3 _topFloorOffset;
-        private int _floorCount;
 
         public FloorManager()
         {
@@ -41,9 +40,9 @@ namespace PizzaTower.Managers
             _topFloorTr = PoolManager.Instance.Spawn(_topFloorTr, pos, Quaternion.identity).transform;
         }
 
-        public void AddFloor()
+        public void AddFloor(int floorCount)
         {
-            var pos = _floorStartPos + _increaseQuantityOfFloor * _floorCount;
+            var pos = _floorStartPos + _increaseQuantityOfFloor * (floorCount - 1);
             var newFloorTr = PoolManager.Instance.Spawn(_floorPrefabTr, pos, Quaternion.identity).transform;
             //newFloorTr.DOMoveY(pos.y - 0.5f, 0);
             //newFloorTr.DOMoveY(pos.y, 0.5f);
@@ -52,10 +51,8 @@ namespace PizzaTower.Managers
 
             if (newFloorTr.TryGetComponent<FloorController>(out var floor))
             {
-                floor.FloorOrder = _floorCount + 1;
+                floor.FloorOrder = floorCount;
             }
-
-            _floorCount++;
 
             SetTopFloorPosition(pos + _topFloorOffset);
         }

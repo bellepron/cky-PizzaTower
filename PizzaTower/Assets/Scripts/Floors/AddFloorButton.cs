@@ -8,6 +8,7 @@ namespace PizzaTower.Floors
     public class AddFloorButton : MonoBehaviour
     {
         EventManager _eventManager;
+        int _floorOrder;
 
         private void Start()
         {
@@ -18,7 +19,8 @@ namespace PizzaTower.Floors
 
         private void AddFloor()
         {
-            _eventManager.TriggerAddFloor();
+            _floorOrder++;
+            _eventManager.TriggerAddFloor(_floorOrder);
         }
     }
 }

@@ -14,5 +14,7 @@ namespace cky.Reuseables.Level
         [field: SerializeField] public ChefSettings[] ChefSettings { get; private set; }
         [field: SerializeField] public ElevatorSettings ElevatorSettings { get; private set; }
         [field: SerializeField] public DeliveryManSettings DeliveryManSettings { get; private set; }
+        [field: SerializeField] public int[] FloorCosts { get; private set; } = new int[6] { 100, 175, 320, 500, 1250, 3800 };
+        [field: SerializeField] public int PizzaCost { get; private set; } = 5;
     }
 }

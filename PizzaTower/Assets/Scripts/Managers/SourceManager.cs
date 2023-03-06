@@ -13,7 +13,7 @@ namespace PizzaTower.Managers
 
         private void Start()
         {
-            _coin = LevelManager.Instance.levelSettings.FloorSettings.FloorUpgradeCosts[1];
+            _coin = LevelManager.Instance.levelSettings.FloorCosts[1];
 
             UpdateCoinText();
 
