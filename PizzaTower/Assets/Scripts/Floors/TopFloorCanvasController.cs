@@ -1,4 +1,5 @@
 using cky.Reuseables.Level;
+using PizzaTower.Helpers;
 using PizzaTower.Managers;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace PizzaTower.Floors
         [SerializeField] private TextMeshProUGUI upgradeCostTMP;
         [SerializeField] private GameObject interactiveUpgradeButton;
         private LevelSettings _levelSettings;
-        private int nextFLoorCost;
+        private string nextFloorCost;
 
         private void Start()
         {
@@ -30,10 +31,10 @@ namespace PizzaTower.Floors
         {
             if (floorCount < _levelSettings.FloorCosts.Length)
             {
-                nextFLoorCost = _levelSettings.FloorCosts[floorCount];
+                nextFloorCost = _levelSettings.FloorCosts[floorCount];
             }
 
-            upgradeCostTMP.text = $"{nextFLoorCost}";
+            upgradeCostTMP.text = nextFloorCost.Convert4();
         }
     }
 }

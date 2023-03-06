@@ -1,3 +1,4 @@
+using PizzaTower.Helpers;
 using TMPro;
 using UnityEngine;
 
@@ -9,27 +10,27 @@ namespace PizzaTower.Managers
         [SerializeField] TextMeshProUGUI moneyTMP;
         [SerializeField] Transform coinIconTr;
         [SerializeField] Transform moneyIconTr;
-        int _coin;
+        string _coin;
 
         private void Start()
         {
-            _coin = LevelManager.Instance.levelSettings.FloorCosts[1];
+            _coin = LevelManager.Instance.levelSettings.FloorCosts[0];
 
             UpdateCoinText();
 
             EventManager.UpdateCoin += UpdateCoin;
         }
 
-        private void UpdateCoin(int value)
+        private void UpdateCoin(string value)
         {
-            _coin += value;
+            _coin += BigNumber.AddStringNumbers(_coin, value);
 
             UpdateCoinText();
         }
 
         private void UpdateCoinText()
         {
-            coinTMP.text = $"{_coin}";
+            coinTMP.text = _coin;
         }
     }
 }

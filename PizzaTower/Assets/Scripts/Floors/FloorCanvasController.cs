@@ -1,3 +1,4 @@
+using PizzaTower.Helpers;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -61,7 +62,7 @@ namespace PizzaTower.Floors
 
         private void UpdateUpgradeCostTMP(int floorLevel)
         {
-            upgradeCostTMP.text = $"{_floorSettings.FloorUpgradeCosts[floorLevel]}";
+            upgradeCostTMP.text = _floorSettings.FloorUpgradeCosts[floorLevel].Convert4();
         }
     }
 }

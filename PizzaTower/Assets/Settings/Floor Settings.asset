@@ -14,18 +14,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TopFloorPrefabTr>k__BackingField: {fileID: 3640582162255529671, guid: 4f10eac489eed2045864592c6df30fa4, type: 3}
   <FloorPrefabTr>k__BackingField: {fileID: 2376636038151947187, guid: b337f976537e44848a6192987fb277d4, type: 3}
-  <ChefPrefabTr>k__BackingField: {fileID: 3025755011098134997, guid: 8aa975ff8e753bd49b7babd9e8b519e4, type: 3}
-  <ChefsTablePrefabTr>k__BackingField: {fileID: 5358353399570210522, guid: d98ba82c8833522489d3a4b3714d087a, type: 3}
   <ChefDeliveryPointX>k__BackingField: -2.5
-  <ChefSpawnLocalPositions>k__BackingField:
-  - {x: 4.3, y: 0.416, z: 0}
-  - {x: 3.0440001, y: 0.416, z: 0}
-  - {x: 1.7880001, y: 0.416, z: 0}
-  <ChefSettings>k__BackingField:
-  - {fileID: 11400000, guid: 1c698294e448c5f4db57bfffe8d4fa94, type: 2}
-  - {fileID: 11400000, guid: 6388871dba1a7e149a535f3bd9b83974, type: 2}
-  - {fileID: 11400000, guid: c271657af2f592245ab3e762a2d007a6, type: 2}
   <FloorMaxLevel>k__BackingField: 50
   <ChefAddLevels>k__BackingField: 010000000a00000014000000
   <StarAddLevels>k__BackingField: 0a000000140000001e0000002800000032000000
-  <FloorUpgradeCosts>k__BackingField: 00000000140000001e00000028000000320000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000a0000000aa000000b4000000be000000c8000000d2000000dc000000e6000000f0000000fa000000040100000e01000018010000220100002c01000036010000400100004a010000540100005e01000068010000720100007c01000086010000900100009a010000a4010000ae010000b8010000c2010000cc010000d6010000e0010000ea010000f4010000
+  <FloorUpgradeCosts>k__BackingField:
+  - 0
+  - 20
+  - 30
+  - 4000
+  - 50000
+  - 600000
+  - 7000000
+  - 80000000
+  - 900000000
+  - 1000000000
+  - 0
+  - 20
+  - 30
+  - 40
+  - 50
+  - 60
+  - 70
+  - 80
+  - 90
+  - 100
+  - 0
+  - 20
+  - 30
+  - 40
+  - 50
+  - 60
+  - 70
+  - 80
+  - 90
+  - 100
+  - 0
+  - 20
+  - 30
+  - 40
+  - 50
+  - 60
+  - 70
+  - 80
+  - 90
+  - 100
+  - 0
+  - 20
+  - 30
+  - 40
+  - 50
+  - 60
+  - 70
+  - 80
+  - 90
+  - 100
