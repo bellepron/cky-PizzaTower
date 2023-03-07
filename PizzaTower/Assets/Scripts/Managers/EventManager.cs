@@ -11,8 +11,7 @@ namespace PizzaTower.Managers
         public static event Action<IPizzaHolder> AddFloorSupervisorToElevator;
         public static event Action<IPizzaHolder> AddPizzaToElevator;
         public static event Action<IPizzaHolder> AddPizzaToParkSupervisor;
-        public static event Action<IPizzaHolder, int> DeliveryManArrivedToParkSupervisor;
-        public static event Action<IPizzaHolder, int> AddPizzaToDeliveryMan;
+        public static event Action<IPizzaHolderWithCapacity> DeliveryManArrivedToParkSupervisor;
         public static event Action<string> AddCoin, RemoveCoin;
         public static event Action UpdateActivationOfUpgradeButtons;
 
@@ -25,7 +24,6 @@ namespace PizzaTower.Managers
             AddFloorSupervisorToElevator = null;
             AddPizzaToElevator = null;
             AddPizzaToParkSupervisor = null;
-            AddPizzaToDeliveryMan = null;
             AddCoin = null;
             RemoveCoin = null;
             UpdateActivationOfUpgradeButtons = null;
@@ -46,11 +44,8 @@ namespace PizzaTower.Managers
         public void TriggerAddPizzaToParkSupervisor(IPizzaHolder i)
             => AddPizzaToParkSupervisor?.Invoke(i);
 
-        public void TriggerDeliveryManArrivedToParkSupervisor(IPizzaHolder i, int capacity)
-            => DeliveryManArrivedToParkSupervisor?.Invoke(i, capacity);
-
-        public void TriggerAddPizzaToDeliveryMan(IPizzaHolder i, int pizzaCountToAdd)
-            => AddPizzaToDeliveryMan?.Invoke(i, pizzaCountToAdd);
+        public void TriggerDeliveryManArrivedToParkSupervisor(IPizzaHolderWithCapacity i)
+            => DeliveryManArrivedToParkSupervisor?.Invoke(i);
 
         public void TriggerAddCoin(string value)
             => AddCoin?.Invoke(value);

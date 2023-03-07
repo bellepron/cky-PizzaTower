@@ -32,11 +32,11 @@ namespace PizzaTower.Characters.ParkSupervisor
             PizzaCount += elevator.PizzaCount;
         }
 
-        private void DeliveryManArrived(IPizzaHolder deliveryMan, int deliveryManCapacity)
+        private void DeliveryManArrived(IPizzaHolderWithCapacity deliveryMan)
         {
-            var pizzaCountToAdd = PizzaCount >= deliveryManCapacity ? (deliveryManCapacity) : PizzaCount;
+            var pizzaCountToAdd = PizzaCount >= deliveryMan.Capacity ? (deliveryMan.Capacity) : PizzaCount;
             PizzaCount -= pizzaCountToAdd;
-            _eventManager.TriggerAddPizzaToDeliveryMan(deliveryMan, pizzaCountToAdd);
+            deliveryMan.AddPizza(pizzaCountToAdd);
         }
     }
 }

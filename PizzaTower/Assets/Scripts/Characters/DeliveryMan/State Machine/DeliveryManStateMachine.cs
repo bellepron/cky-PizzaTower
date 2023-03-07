@@ -6,11 +6,10 @@ using PizzaTower.Floors;
 using PizzaTower.Managers;
 using UnityEngine;
 using PizzaTower.Characters.ParkSupervisor;
-using System;
 
 namespace PizzaTower.Characters.DeliveryMan.StateMachine
 {
-    public class DeliveryManStateMachine : BaseStateMachine, IPizzaHolder
+    public class DeliveryManStateMachine : BaseStateMachine, IPizzaHolderWithCapacity
     {
         [field: SerializeField] private DeliveryManAnimator DeliveryManAnimator { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
@@ -35,16 +34,6 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
             ChangeSortingLayer(order);
 
             InitState();
-
-            EventManager.AddPizzaToDeliveryMan += AddPizza;
-        }
-
-        private void AddPizza(IPizzaHolder deliveryMan, int pizzaCountToAdd)
-        {
-            if ((object)deliveryMan == this)
-            {
-                PizzaCount += pizzaCountToAdd;
-            }
         }
 
         private void SetVariables(DeliveryManSettings deliveryManSettings, DeliveryFloorSettings deliveryFloorSettings, int order)
@@ -61,13 +50,6 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
             EventManager = (EventManager)EventManagerAbstract.Instance;
         }
 
-        private void ChangeSortingLayer(int order)
-        {
-            SpriteRenderer.sortingOrder += order;
-        }
-
-        private void InitState() => SwitchState(new GoToParkingPointState(this));
-
         private void Upgrade(int deliveryLevel)
         {
             MovementSpeed = InitMovementSpeed + InitMovementSpeed * (float)(deliveryLevel - 1) * 0.1f;
@@ -78,6 +60,12 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
 
             DeliveryManAnimator?.UpdateValues(MovementSpeed);
         }
+
+        void IPizzaHolderWithCapacity.AddPizza(int pizzaCountToAdd) => PizzaCount += pizzaCountToAdd;
+
+        private void ChangeSortingLayer(int order) => SpriteRenderer.sortingOrder += order;
+
+        private void InitState() => SwitchState(new GoToParkingPointState(this));
 
         public Vector3 GetPosition() => transform.position;
 

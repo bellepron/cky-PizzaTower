@@ -44,7 +44,7 @@ namespace PizzaTower.Characters.DeliveryMan.States
 
         private void ArrivedToTheParkPoint()
         {
-            stateMachine.EventManager.TriggerDeliveryManArrivedToParkSupervisor(stateMachine, stateMachine.Capacity);
+            stateMachine.EventManager.TriggerDeliveryManArrivedToParkSupervisor(stateMachine);
 
             stateMachine.SwitchState(new GetDeliveryState(stateMachine));
         }
