@@ -45,5 +45,36 @@ namespace PizzaTower.Helpers
 
             return sequence;
         }
+
+        public static Tween CanvasYellowBarAnimation(this Transform itemTr, float time)
+        {
+            Sequence sequence = DOTween.Sequence();
+
+            sequence.Append(itemTr.DOScaleX(1, time * 0.65f).SetEase(Ease.InSine));
+            sequence.Append(itemTr.DOScale(Vector3.one * 1.075f, time * 0.25f).SetEase(Ease.InSine));
+            sequence.Append(itemTr.DOScale(Vector3.one, time * 0.1f).SetEase(Ease.OutSine));
+
+            return sequence;
+        }
+
+        public static Tween CanvasButtonAnimation(this Transform itemTr, float time)
+        {
+            Sequence sequence = DOTween.Sequence();
+
+            sequence.Append(itemTr.DOScale(Vector3.one, time * 0.65f).SetEase(Ease.InSine));
+            sequence.Append(itemTr.DOScale(Vector3.one * 1.1f, time * 0.25f).SetEase(Ease.InSine));
+            sequence.Append(itemTr.DOScale(Vector3.one, time * 0.1f).SetEase(Ease.OutSine));
+
+            return sequence;
+        }
+
+        public static void CanvasStarAnimation(this Transform itemTr, float time)
+        {
+            Sequence sequence = DOTween.Sequence();
+
+            sequence.Append(itemTr.DOScale(Vector3.one, time * 0.65f).SetEase(Ease.InSine));
+            sequence.Append(itemTr.DOScale(Vector3.one * 1.25f, time * 0.25f).SetEase(Ease.InSine));
+            sequence.Append(itemTr.DOScale(Vector3.one, time * 0.1f).SetEase(Ease.OutSine));
+        }
     }
 }

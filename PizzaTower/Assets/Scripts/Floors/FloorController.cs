@@ -1,5 +1,6 @@
 using DG.Tweening;
 using PizzaTower.Characters.FloorSupervisor;
+using PizzaTower.Floors.UI;
 using PizzaTower.Helpers;
 using PizzaTower.Interfaces;
 using PizzaTower.Managers;
@@ -16,6 +17,7 @@ namespace PizzaTower.Floors
 
         public FloorSettings FloorSettings { get; private set; }
         [field: SerializeField] public FloorCanvasController FloorCanvasController { get; private set; }
+        [field: SerializeField] public FloorCanvasAnimations FloorCanvasAnimations { get; private set; }
         [field: SerializeField] public FloorSupervisorController FloorSupervisor { get; private set; }
         public int FloorOrder { get; set; }
 
@@ -33,6 +35,7 @@ namespace PizzaTower.Floors
             chefSpawner = new ChefSpawner(this, FloorSupervisor);
             FloorSupervisor?.SubscribeToPizzaDeliveredEvent(this);
 
+            FloorCanvasAnimations?.Initialize();
             FloorSupervisorOpeningAnimation();
         }
 
