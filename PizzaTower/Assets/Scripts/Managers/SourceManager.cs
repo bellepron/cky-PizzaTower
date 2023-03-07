@@ -18,10 +18,10 @@ namespace PizzaTower.Managers
 
             UpdateCoinText();
 
-            EventManager.UpdateCoin += UpdateCoin;
+            EventManager.AddCoin += AddCoin;
         }
 
-        private void UpdateCoin(string value)
+        private void AddCoin(string value)
         {
             _coin = BigNumber.AddStringNumbers(_coin, value);
 
