@@ -1,15 +1,11 @@
-using PizzaTower.Helpers;
+using PizzaTower.Floors.UI;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 namespace PizzaTower.Floors
 {
-    public class FloorCanvasController : MonoBehaviour
+    public class FloorCanvasController : FloorCanvasControllerAbstract
     {
-        [SerializeField] private TextMeshProUGUI barTMP;
-        [SerializeField] private TextMeshProUGUI upgradeCostTMP;
-        [SerializeField] private GameObject interactiveUpgradeButton;
         [SerializeField] private GameObject buttonHolder;
         [SerializeField] private GameObject[] stars;
         private int _starsCount;
@@ -17,27 +13,35 @@ namespace PizzaTower.Floors
         private FloorSettings _floorSettings;
         private string barTextConst;
 
+        private void Start() { }
+
+        protected override void GetCosts()
+        {
+            costs = _floor.FloorSettings.FloorUpgradeCosts;
+        }
+
         public void Initialize(FloorController floor)
         {
             _floor = floor;
             _floorSettings = floor.FloorSettings;
             barTextConst = $"Floor {floor.FloorOrder} - Level ";
 
+            GetCosts();
             UpdateBarTMP(1);
             UpdateUpgradeCostTMP(1);
 
-            floor.UpgradeEvent += Upgrade;
+            SubscribeEvents();
+            _floor.UpgradeEvent += OnUpgrade;
+            _floor.UpgradeEvent += AddStar;
         }
 
-        private void Upgrade(int floorLevel)
+        protected override void OnUpgrade(int floorLevel)
         {
             UpdateBarTMP(floorLevel);
 
-            AddStar(floorLevel);
-
             if (floorLevel == _floorSettings.FloorMaxLevel)
             {
-                _floor.UpgradeEvent -= Upgrade;
+                _floor.UpgradeEvent -= OnUpgrade;
                 buttonHolder.SetActive(false);
 
                 return;
@@ -58,11 +62,6 @@ namespace PizzaTower.Floors
         private void UpdateBarTMP(int floorLevel)
         {
             barTMP.text = $"{barTextConst}{floorLevel}";
-        }
-
-        private void UpdateUpgradeCostTMP(int floorLevel)
-        {
-            upgradeCostTMP.text = _floorSettings.FloorUpgradeCosts[floorLevel].Convert4();
         }
     }
 }

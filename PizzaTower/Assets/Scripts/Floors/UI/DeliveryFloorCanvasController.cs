@@ -1,5 +1,4 @@
 using PizzaTower.Managers;
-using UnityEngine;
 
 namespace PizzaTower.Floors.UI
 {
@@ -10,8 +9,10 @@ namespace PizzaTower.Floors.UI
             costs = LevelManager.Instance.levelSettings.DeliveryFloorSettings.DeliveryFloorCosts;
         }
 
-        protected override void SubscribeEvent()
+        protected override void SubscribeEvents()
         {
+            base.SubscribeEvents();
+
             EventManager.DeliveryFloorUpgrade += OnUpgrade;
         }
     }

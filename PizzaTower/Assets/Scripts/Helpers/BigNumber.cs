@@ -68,7 +68,7 @@ namespace PizzaTower.Helpers
 
         public static bool IsBiggerOrEqual(string x, string y)
         {
-            if (ToBigInteger(x) < ToBigInteger(y))
+            if (ToBigInteger(x) >= ToBigInteger(y))
                 return true;
 
             return false;

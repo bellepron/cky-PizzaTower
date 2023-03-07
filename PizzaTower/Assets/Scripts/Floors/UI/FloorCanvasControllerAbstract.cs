@@ -1,5 +1,5 @@
-using PizzaTower.Helpers;
 using PizzaTower.Managers;
+using PizzaTower.Helpers;
 using TMPro;
 using UnityEngine;
 
@@ -17,16 +17,27 @@ namespace PizzaTower.Floors.UI
         {
             GetCosts();
             UpdateUpgradeCostTMP(0);
-            SubscribeEvent();
+            SubscribeEvents();
         }
 
         protected abstract void GetCosts();
+
         private void GetFirstValueOfButton() => UpdateUpgradeCostTMP(0);
-        protected abstract void SubscribeEvent();
 
-        protected void OnUpgrade(int level) => UpdateUpgradeCostTMP(level);
+        protected virtual void SubscribeEvents()
+            => EventManager.UpdateActivationOfUpgradeButtons += UpdateActivationOfUpgradeButton;
 
-        private void UpdateUpgradeCostTMP(int floorCount)
+        private void UpdateActivationOfUpgradeButton(string coinsInPossession)
+        {
+            if (BigNumber.IsBiggerOrEqual(coinsInPossession, upgradeCost))
+                interactiveUpgradeButton.SetActive(true);
+            else
+                interactiveUpgradeButton.SetActive(false);
+        }
+
+        protected virtual void OnUpgrade(int level) => UpdateUpgradeCostTMP(level);
+
+        protected void UpdateUpgradeCostTMP(int floorCount)
         {
             if (floorCount < costs.Length)
                 upgradeCost = costs[floorCount];

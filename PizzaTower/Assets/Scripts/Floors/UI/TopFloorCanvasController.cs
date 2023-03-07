@@ -9,8 +9,10 @@ namespace PizzaTower.Floors.UI
             costs = LevelManager.Instance.levelSettings.FloorCosts;
         }
 
-        protected override void SubscribeEvent()
+        protected override void SubscribeEvents()
         {
+            base.SubscribeEvents();
+
             EventManager.AddFloor += OnUpgrade;
         }
     }
