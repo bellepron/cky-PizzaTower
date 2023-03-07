@@ -5,7 +5,19 @@ namespace PizzaTower.Helpers
 {
     public static class DoTweenAnimation
     {
+        public static void NewFloorAnimation(this Transform newFloorTr, Vector3 pos, float floorOpeningTime)
+        {
+            newFloorTr.DOMoveY(pos.y - 0.5f, 0);
+            newFloorTr.DOMoveY(pos.y, floorOpeningTime);
+            newFloorTr.DOScaleY(0, 0);
+            newFloorTr.DOScaleY(1, floorOpeningTime).SetEase(Ease.InSine);
+        }
 
+        public static void TopFloorAnimation(this Transform topFloorTr, Vector3 pos, float topFloorOffsetY, float floorOpeningTime)
+        {
+            topFloorTr.DOMoveY(pos.y - topFloorOffsetY, 0);
+            topFloorTr.DOMoveY(pos.y, floorOpeningTime).SetEase(Ease.InSine);
+        }
 
         public static Tween ChefOpeningAnimation(this Transform chefTr, float chefOpeningTime)
         {
@@ -14,7 +26,7 @@ namespace PizzaTower.Helpers
             var scale = chefTr.localScale;
             chefTr.localScale = Vector3.zero;
             sequence.Append(chefTr.DOScale(scale * 1.0f, chefOpeningTime * 0.65f).SetEase(Ease.InSine));
-            sequence.Append(chefTr.DOScale(scale * 1.15f, chefOpeningTime * 0.25f).SetEase(Ease.InSine));
+            sequence.Append(chefTr.DOScale(scale * 1.1f, chefOpeningTime * 0.25f).SetEase(Ease.InSine));
             sequence.Append(chefTr.DOScale(scale, chefOpeningTime * 0.1f).SetEase(Ease.OutSine));
 
             return sequence;

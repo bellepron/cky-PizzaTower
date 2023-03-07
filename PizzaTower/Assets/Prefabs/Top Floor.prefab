@@ -261,7 +261,6 @@ MonoBehaviour:
   barTMP: {fileID: 7600852756177166722}
   upgradeCostTMP: {fileID: 3584495177424671104}
   interactiveUpgradeButton: {fileID: 8488840274401948911}
-  buttonHolder: {fileID: 3640582163384272532}
 --- !u!1 &3640582162388345452
 GameObject:
   m_ObjectHideFlags: 0

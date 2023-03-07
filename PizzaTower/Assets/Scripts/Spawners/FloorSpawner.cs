@@ -3,6 +3,7 @@ using PizzaTower.Floors;
 using CKY.Pooling;
 using UnityEngine;
 using DG.Tweening;
+using PizzaTower.Helpers;
 
 namespace PizzaTower.Spawners
 {
@@ -49,29 +50,13 @@ namespace PizzaTower.Spawners
                 floor.FloorOrder = floorCount;
             }
 
-            NewFloorAnimation(newFloorTr, pos);
+            newFloorTr.NewFloorAnimation(pos, _floorSettings.FloorOpeningTime);
             SetTopFloorPosition(pos + _topFloorOffset);
         }
 
         private void SetTopFloorPosition(Vector3 pos)
         {
-            _topFloorTr.position = pos;
-
-            TopFloorAnimation(pos);
-        }
-
-        private void NewFloorAnimation(Transform newFloorTr, Vector3 pos)
-        {
-            newFloorTr.DOMoveY(pos.y - 0.5f, 0);
-            newFloorTr.DOMoveY(pos.y, _floorSettings.FloorOpeningTime);
-            newFloorTr.DOScaleY(0, 0);
-            newFloorTr.DOScaleY(1, _floorSettings.FloorOpeningTime).SetEase(Ease.InSine);
-        }
-
-        private void TopFloorAnimation(Vector3 pos)
-        {
-            _topFloorTr.DOMoveY(pos.y - _topFloorOffset.y, 0);
-            _topFloorTr.DOMoveY(pos.y, _floorSettings.FloorOpeningTime).SetEase(Ease.InSine);
+            _topFloorTr.TopFloorAnimation(pos, _topFloorOffset.y, _floorSettings.FloorOpeningTime);
         }
     }
 }
