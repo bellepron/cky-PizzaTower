@@ -19,29 +19,31 @@ namespace PizzaTower.Helpers
             topFloorTr.DOMoveY(pos.y, floorOpeningTime).SetEase(Ease.InSine);
         }
 
-        public static Tween ChefOpeningAnimation(this Transform chefTr, float chefOpeningTime)
+        public static Tween StaffOpeningAnimation(this Transform staffTr, Vector3 scale, float chefOpeningTime)
         {
             Sequence sequence = DOTween.Sequence();
 
-            var scale = chefTr.localScale;
-            chefTr.localScale = Vector3.zero;
-            sequence.Append(chefTr.DOScale(scale * 1.0f, chefOpeningTime * 0.65f).SetEase(Ease.InSine));
-            sequence.Append(chefTr.DOScale(scale * 1.1f, chefOpeningTime * 0.25f).SetEase(Ease.InSine));
-            sequence.Append(chefTr.DOScale(scale, chefOpeningTime * 0.1f).SetEase(Ease.OutSine));
+            staffTr.localScale = Vector3.zero;
+
+            sequence.Append(staffTr.DOScale(scale * 1.0f, chefOpeningTime * 0.65f).SetEase(Ease.InSine));
+            sequence.Append(staffTr.DOScale(scale * 1.1f, chefOpeningTime * 0.25f).SetEase(Ease.InSine));
+            sequence.Append(staffTr.DOScale(scale, chefOpeningTime * 0.1f).SetEase(Ease.OutSine));
 
             return sequence;
         }
 
-        public static void TableOpeningAnimation(this Transform tableTr, float tableOpeningTime)
+        public static Tween TableOpeningAnimation(this Transform tableTr, Vector3 scale, float tableOpeningTime)
         {
             Sequence sequence = DOTween.Sequence();
 
-            var scale = tableTr.localScale;
             var scaleY = scale.y;
             tableTr.localScale = new Vector3(tableTr.localScale.x, 0, 0);
+
             sequence.Append(tableTr.DOScaleY(scaleY, tableOpeningTime * 0.65f).SetEase(Ease.InSine));
             sequence.Append(tableTr.DOScale(scale * 1.2f, tableOpeningTime * 0.25f).SetEase(Ease.InSine));
             sequence.Append(tableTr.DOScale(scale, tableOpeningTime * 0.1f).SetEase(Ease.OutSine));
+
+            return sequence;
         }
     }
 }

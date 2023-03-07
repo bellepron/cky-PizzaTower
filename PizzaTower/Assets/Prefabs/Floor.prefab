@@ -761,6 +761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <FloorCanvasController>k__BackingField: {fileID: 1891236723}
   <FloorSupervisor>k__BackingField: {fileID: 6780779220872781977}
+  floorSupervisorTr: {fileID: 2376636037582998348}
+  floorSupervisorDeskTr: {fileID: 2376636037761431412}
 --- !u!114 &1891236723
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
+using DG.Tweening;
 using PizzaTower.Characters.FloorSupervisor;
+using PizzaTower.Helpers;
 using PizzaTower.Interfaces;
 using PizzaTower.Managers;
 using PizzaTower.Spawners;
@@ -16,7 +18,11 @@ namespace PizzaTower.Floors
         [field: SerializeField] public FloorCanvasController FloorCanvasController { get; private set; }
         [field: SerializeField] public FloorSupervisorController FloorSupervisor { get; private set; }
         public int FloorOrder { get; set; }
-        public ChefSpawner ChefSpawner { get; set; }
+
+        private ChefSpawner chefSpawner;
+
+        [SerializeField] private Transform floorSupervisorTr;
+        [SerializeField] private Transform floorSupervisorDeskTr;
 
         private int _floorLevel = 1;
 
@@ -24,8 +30,10 @@ namespace PizzaTower.Floors
         {
             FloorSettings = LevelManager.Instance.levelSettings.FloorSettings;
             FloorCanvasController?.Initialize(this);
-            ChefSpawner = new ChefSpawner(this, FloorSupervisor);
+            chefSpawner = new ChefSpawner(this, FloorSupervisor);
             FloorSupervisor?.SubscribeToPizzaDeliveredEvent(this);
+
+            FloorSupervisorOpeningAnimation();
         }
 
         public void UpgradeFloor()
@@ -37,6 +45,19 @@ namespace PizzaTower.Floors
         public void TriggerAddPizzaToFloorSupervisor(IPizzaHolder chef)
         {
             AddPizzaToFloorSupervisor?.Invoke(chef);
+        }
+
+        private void FloorSupervisorOpeningAnimation()
+        {
+            var floorSupervisorScale = floorSupervisorTr.localScale;
+            var floorSupervisorDeskScale = floorSupervisorDeskTr.localScale;
+            floorSupervisorTr.localScale = Vector3.zero;
+            floorSupervisorDeskTr.localScale = new Vector3(floorSupervisorDeskTr.localScale.x, 0, 0);
+            var delay = FloorSettings.FloorOpeningTime + FloorSettings.ChefsTableOpeningTime + FloorSettings.ChefOpeningTime;
+
+            DOVirtual.DelayedCall(delay,
+                () => floorSupervisorDeskTr.TableOpeningAnimation(floorSupervisorDeskScale, FloorSettings.FloorSupervisorDeskOpeningTime)
+                .OnComplete(() => floorSupervisorTr.StaffOpeningAnimation(floorSupervisorScale, FloorSettings.FloorSupervisorDeskOpeningTime)));
         }
     }
 }
