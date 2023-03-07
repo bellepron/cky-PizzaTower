@@ -31,7 +31,6 @@ namespace PizzaTower.Characters.FloorSupervisor
         private void AddPizza(IPizzaHolder chef)
         {
             PizzaCount += chef.PizzaCount;
-            Debug.Log(PizzaCount);
         }
     }
 }
