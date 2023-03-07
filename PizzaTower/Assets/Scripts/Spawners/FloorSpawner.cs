@@ -1,11 +1,12 @@
-using CKY.Pooling;
+using PizzaTower.Managers;
 using PizzaTower.Floors;
+using CKY.Pooling;
 using UnityEngine;
 using DG.Tweening;
 
-namespace PizzaTower.Managers
+namespace PizzaTower.Spawners
 {
-    public class FloorManager
+    public class FloorSpawner
     {
         private FloorSettings _floorSettings;
         private Transform _topFloorTr;
@@ -15,7 +16,7 @@ namespace PizzaTower.Managers
         private Vector3 _increaseQuantityOfFloor;
         private Vector3 _topFloorOffset;
 
-        public FloorManager()
+        public FloorSpawner()
         {
             GetVariables();
             CreateTopFloor(_floorStartPos);

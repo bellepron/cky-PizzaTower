@@ -21,7 +21,7 @@ MonoBehaviour:
   <FloorUpgradeCosts>k__BackingField:
   - 0
   - 20
-  - 30
+  - 100
   - 4000
   - 50000
   - 600000
@@ -29,7 +29,7 @@ MonoBehaviour:
   - 80000000
   - 900000000
   - 1000000000
-  - 0
+  - 20000000000
   - 20
   - 30
   - 40
