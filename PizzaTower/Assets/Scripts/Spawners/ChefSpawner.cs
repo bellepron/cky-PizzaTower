@@ -8,6 +8,7 @@ using PizzaTower.Managers;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using PizzaTower.Helpers;
 
 namespace PizzaTower.Spawners
 {
@@ -54,11 +55,22 @@ namespace PizzaTower.Spawners
         private void CreateChef()
         {
             var pos = _chefSpawnLocalPositions[_chefCount];
-            var chefTr = PoolManager.Instance.Spawn(_chefSettings[_chefCount].ChefPrefabTr, pos, Quaternion.identity).transform;
-            chefTr.parent = _floorTransform;
-            chefTr.localPosition = pos;
-            var chefSM = chefTr.GetComponent<ChefStateMachine>();
-            chefSM.Initialize(_floor, _chefCount, pos, _floorSupervisor);
+            Transform chefTr = null;
+
+            DOVirtual.DelayedCall(_floorSettings.TableOpeningTime, () =>
+            {
+                chefTr = PoolManager.Instance.Spawn(_chefSettings[_chefCount].ChefPrefabTr, pos, Quaternion.identity).transform;
+                chefTr.parent = _floorTransform;
+                chefTr.localPosition = pos;
+
+                chefTr.ChefOpeningAnimation(_floorSettings.ChefOpeningTime).OnComplete(() =>
+                       {
+                           if (chefTr.TryGetComponent<ChefStateMachine>(out var chefSM))
+                           {
+                               chefSM.Initialize(_floor, _chefCount, pos, _floorSupervisor);
+                           }
+                       });
+            });
         }
 
         private void CreateChefsTable()
@@ -67,6 +79,8 @@ namespace PizzaTower.Spawners
             var chefsTableTr = PoolManager.Instance.Spawn(_chefSettings[_chefCount].ChefsTablePrefabTr, pos, Quaternion.identity).transform;
             chefsTableTr.parent = this._floorTransform;
             chefsTableTr.localPosition = pos;
+
+            chefsTableTr.TableOpeningAnimation(_floorSettings.TableOpeningTime);
         }
     }
 }
