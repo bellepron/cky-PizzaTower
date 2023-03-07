@@ -10,6 +10,7 @@ namespace PizzaTower.Floors
         [field: SerializeField] public Vector3 ParkingPoint { get; private set; } = new Vector3(-2.3f, -14.4f, 0);
         [field: SerializeField] public Vector3 DeliveryPoint { get; private set; } = new Vector3(10.0f, -14.4f, 0);
         [field: SerializeField] public int DeliveryMaxLevel { get; private set; } = 50;
-        [field: SerializeField] public int[] DeliveryManAddLevels { get; private set; } = new int[11] { 1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 };
+        [field: SerializeField] public int[] DeliveryManAddLevels { get; private set; } = new int[11] { 1, 2, 5, 10, 20, 25, 30, 35, 40, 45, 50 };
+        [field: SerializeField] public string[] DeliveryFloorCosts { get; private set; } = new string[11] { "175", "520", "12500", "250000", "3800000", "52000000", "700000000", "4700000000", "28000000000", "150000000000", "4400000000000" };
     }
 }

@@ -28,17 +28,18 @@ namespace PizzaTower.Spawners
 
             if (_deliveryFloorSettings.DeliveryManAddLevels.Contains(1))
                 Spawn();
+
+            EventManager.DeliveryFloorUpgrade += Upgrade;
+        }
+
+        private void Upgrade(int deliveryFloorLevel)
+        {
+            if (_deliveryFloorSettings.DeliveryManAddLevels.Contains(deliveryFloorLevel))
+                Spawn();
         }
 
         private void Spawn()
         {
-            if (_deliveryManCount >= _deliveryFloorSettings.DeliveryManAddLevels.Length)
-            {
-                Debug.LogWarning($"Maximum number of delivery mans reached!");
-
-                return;
-            }
-
             CreateDeliveryMan();
 
             _deliveryManCount++;

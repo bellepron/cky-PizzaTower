@@ -20,11 +20,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c271657af2f592245ab3e762a2d007a6, type: 2}
   <ElevatorSettings>k__BackingField: {fileID: 11400000, guid: a57ca1886871d394ba39ee4472c5517c, type: 2}
   <DeliveryManSettings>k__BackingField: {fileID: 11400000, guid: 262d9c8796ac4d24da0e86af70250864, type: 2}
+  <PizzaCost>k__BackingField: 17
   <FloorCosts>k__BackingField:
   - 100
   - 1000
   - 10000
   - 100000
-  - 250000
-  - 1000000
-  <PizzaCost>k__BackingField: 5
+  - 2500000
+  - 10000000

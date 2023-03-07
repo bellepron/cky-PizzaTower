@@ -23,7 +23,7 @@ namespace PizzaTower.Managers
 
         private void UpdateCoin(string value)
         {
-            _coin += BigNumber.AddStringNumbers(_coin, value);
+            _coin = BigNumber.AddStringNumbers(_coin, value);
 
             UpdateCoinText();
         }
