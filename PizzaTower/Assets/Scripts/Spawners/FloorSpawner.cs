@@ -21,8 +21,6 @@ namespace PizzaTower.Spawners
             GetVariables();
             CreateTopFloor(_floorStartPos);
 
-            //SetTopFloorPosition(_floorStartPos);
-
             EventManager.AddFloor += AddFloor;
         }
 
@@ -45,24 +43,35 @@ namespace PizzaTower.Spawners
         {
             var pos = _floorStartPos + _increaseQuantityOfFloor * (floorCount - 1);
             var newFloorTr = PoolManager.Instance.Spawn(_floorPrefabTr, pos, Quaternion.identity).transform;
-            //newFloorTr.DOMoveY(pos.y - 0.5f, 0);
-            //newFloorTr.DOMoveY(pos.y, 0.5f);
-            //newFloorTr.DOScaleY(0, 0);
-            //newFloorTr.DOScaleY(1, 0.5f).SetEase(Ease.InSine);
 
             if (newFloorTr.TryGetComponent<FloorController>(out var floor))
             {
                 floor.FloorOrder = floorCount;
             }
 
+            NewFloorAnimation(newFloorTr, pos);
             SetTopFloorPosition(pos + _topFloorOffset);
         }
 
         private void SetTopFloorPosition(Vector3 pos)
         {
             _topFloorTr.position = pos;
-            //topFloorTr.DOMoveY(pos.y - _topFloorOffset.y, 0);
-            //topFloorTr.DOMoveY(pos.y, 0.5f).SetEase(Ease.InSine);
+
+            TopFloorAnimation(pos);
+        }
+
+        private void NewFloorAnimation(Transform newFloorTr, Vector3 pos)
+        {
+            newFloorTr.DOMoveY(pos.y - 0.5f, 0);
+            newFloorTr.DOMoveY(pos.y, _floorSettings.FloorOpeningTime);
+            newFloorTr.DOScaleY(0, 0);
+            newFloorTr.DOScaleY(1, _floorSettings.FloorOpeningTime).SetEase(Ease.InSine);
+        }
+
+        private void TopFloorAnimation(Vector3 pos)
+        {
+            _topFloorTr.DOMoveY(pos.y - _topFloorOffset.y, 0);
+            _topFloorTr.DOMoveY(pos.y, _floorSettings.FloorOpeningTime).SetEase(Ease.InSine);
         }
     }
 }

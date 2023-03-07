@@ -7,6 +7,7 @@ namespace PizzaTower.Floors
     {
         [field: SerializeField] public Transform TopFloorPrefabTr { get; private set; }
         [field: SerializeField] public Transform FloorPrefabTr { get; private set; }
+        public float FloorOpeningTime { get; private set; } = 0.5f;
         public Vector3 FloorStartPos { get; private set; } = new Vector3(0, -10, 0);
         public Vector3 IncreaseQuantityOfFloor { get; private set; } = new Vector3(0, 4.2f, 0);
         public Vector3 TopFloorOffset { get; private set; } = new Vector3(0, 3.1f, 0);

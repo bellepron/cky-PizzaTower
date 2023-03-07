@@ -7,6 +7,7 @@ using PizzaTower.Floors;
 using PizzaTower.Managers;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 namespace PizzaTower.Spawners
 {
@@ -33,7 +34,7 @@ namespace PizzaTower.Spawners
             floor.UpgradeEvent += Upgrade;
 
             if (_floorSettings.ChefAddLevels.Contains(1))
-                Spawn();
+                DOVirtual.DelayedCall(_floorSettings.FloorOpeningTime, () => Spawn());
         }
 
         private void Upgrade(int floorLevel)
