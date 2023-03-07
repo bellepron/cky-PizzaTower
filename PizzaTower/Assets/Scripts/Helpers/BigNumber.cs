@@ -58,13 +58,22 @@ namespace PizzaTower.Helpers
 
         public static string SubtractStringNumbers(string x, string y)
         {
-            return (ToBigInteger(x) + ToBigInteger(y)).ToString();
+            return (ToBigInteger(x) - ToBigInteger(y)).ToString();
         }
 
-        //private string Method_Multiply_SI(string x, int y)
-        //{
-        //    return (ToBigInteger(x) * y).ToString();
-        //}
+        public static string MultiplyStringNumbers(string x, string y)
+        {
+            return (ToBigInteger(x) * ToBigInteger(y)).ToString();
+        }
+
+        public static bool IsBiggerOrEqual(string x, string y)
+        {
+            if (ToBigInteger(x) < ToBigInteger(y))
+                return true;
+
+            return false;
+        }
+
 
         public static BigInteger ToBigInteger(string value) // Faster than BigInteger.Parse(value) ***
         {

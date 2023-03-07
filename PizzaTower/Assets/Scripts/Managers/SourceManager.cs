@@ -1,4 +1,5 @@
 using PizzaTower.Helpers;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -19,11 +20,19 @@ namespace PizzaTower.Managers
             UpdateCoinText();
 
             EventManager.AddCoin += AddCoin;
+            EventManager.RemoveCoin += RemoveCoin;
         }
 
         private void AddCoin(string value)
         {
             _coin = BigNumber.AddStringNumbers(_coin, value);
+
+            UpdateCoinText();
+        }
+
+        private void RemoveCoin(string value)
+        {
+            _coin = BigNumber.SubtractStringNumbers(_coin, value);
 
             UpdateCoinText();
         }
