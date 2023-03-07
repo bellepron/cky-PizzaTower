@@ -1,5 +1,6 @@
 using cky.Reuseables.Managers;
 using PizzaTower.Helpers;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -12,12 +13,19 @@ namespace PizzaTower.Managers
         [SerializeField] Transform coinIconTr;
         [SerializeField] Transform moneyIconTr;
         EventManager _eventManager;
-        string _coin;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                AddCoin("10000");
+            }
+        }
 
         private void Start()
         {
             _eventManager = (EventManager)EventManagerAbstract.Instance;
-            _coin = LevelManager.Instance.levelSettings.FloorCosts[0];
+            Globals.CoinsInPossession = LevelManager.Instance.levelSettings.FloorCosts[0];
 
             UpdateCoinText();
             UpdateActivationOfButtons();
@@ -28,7 +36,7 @@ namespace PizzaTower.Managers
 
         private void AddCoin(string value)
         {
-            _coin = BigNumber.AddStringNumbers(_coin, value);
+            Globals.CoinsInPossession = BigNumber.AddStringNumbers(Globals.CoinsInPossession, value);
             UpdateCoinText();
 
             UpdateActivationOfButtons();
@@ -36,20 +44,18 @@ namespace PizzaTower.Managers
 
         private void RemoveCoin(string value)
         {
-            _coin = BigNumber.SubtractStringNumbers(_coin, value);
+            Globals.CoinsInPossession = BigNumber.SubtractStringNumbers(Globals.CoinsInPossession, value);
             UpdateCoinText();
-
-            UpdateActivationOfButtons();
         }
 
         private void UpdateCoinText()
         {
-            coinTMP.text = _coin;
+            coinTMP.text = BigNumber.Convert4(Globals.CoinsInPossession);
         }
 
         private void UpdateActivationOfButtons()
         {
-            _eventManager.TriggerUpdateActivationOfUpgradeButtons(_coin);
+            _eventManager.TriggerUpdateActivationOfUpgradeButtons();
         }
     }
 }

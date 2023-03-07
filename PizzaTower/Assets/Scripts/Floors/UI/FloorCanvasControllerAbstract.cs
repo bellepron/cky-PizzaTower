@@ -2,6 +2,7 @@ using PizzaTower.Managers;
 using PizzaTower.Helpers;
 using TMPro;
 using UnityEngine;
+using cky.Reuseables.Managers;
 
 namespace PizzaTower.Floors.UI
 {
@@ -12,35 +13,47 @@ namespace PizzaTower.Floors.UI
         [SerializeField] protected GameObject interactiveUpgradeButton;
         protected string[] costs;
         protected string upgradeCost;
+        EventManager _eventManager;
 
-        private void Start()
+        protected virtual void Start()
         {
             GetCosts();
-            UpdateUpgradeCostTMP(0);
+            GetEventManager();
+            GetFirstValueOfButton();
             SubscribeEvents();
         }
 
         protected abstract void GetCosts();
 
-        private void GetFirstValueOfButton() => UpdateUpgradeCostTMP(0);
+        protected void GetEventManager()
+            => _eventManager = (EventManager)EventManagerAbstract.Instance;
+
+        protected virtual void GetFirstValueOfButton() => UpdateUpgradeCost(0);
 
         protected virtual void SubscribeEvents()
             => EventManager.UpdateActivationOfUpgradeButtons += UpdateActivationOfUpgradeButton;
 
-        private void UpdateActivationOfUpgradeButton(string coinsInPossession)
+        protected void UpdateActivationOfUpgradeButton()
         {
-            if (BigNumber.IsBiggerOrEqual(coinsInPossession, upgradeCost))
+            if (BigNumber.IsBiggerOrEqual(Globals.CoinsInPossession, upgradeCost))
                 interactiveUpgradeButton.SetActive(true);
             else
                 interactiveUpgradeButton.SetActive(false);
         }
 
-        protected virtual void OnUpgrade(int level) => UpdateUpgradeCostTMP(level);
-
-        protected void UpdateUpgradeCostTMP(int floorCount)
+        protected virtual void OnUpgrade(int level)
         {
-            if (floorCount < costs.Length)
-                upgradeCost = costs[floorCount];
+            _eventManager.TriggerRemoveCoin(upgradeCost);
+
+            UpdateUpgradeCost(level);
+
+            _eventManager.TriggerUpdateActivationOfUpgradeButtons();
+        }
+
+        protected void UpdateUpgradeCost(int level)
+        {
+            if (level < costs.Length)
+                upgradeCost = costs[level];
 
             upgradeCostTMP.text = upgradeCost.Convert4();
         }

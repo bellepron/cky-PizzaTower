@@ -13,7 +13,8 @@ namespace PizzaTower.Managers
         public static event Action<IPizzaHolder> AddPizzaToParkSupervisor;
         public static event Action<IPizzaHolder, int> DeliveryManArrivedToParkSupervisor;
         public static event Action<IPizzaHolder, int> AddPizzaToDeliveryMan;
-        public static event Action<string> AddCoin, RemoveCoin, UpdateActivationOfUpgradeButtons;
+        public static event Action<string> AddCoin, RemoveCoin;
+        public static event Action UpdateActivationOfUpgradeButtons;
 
         protected override void ResetEvents()
         {
@@ -57,7 +58,7 @@ namespace PizzaTower.Managers
         public void TriggerRemoveCoin(string value)
             => RemoveCoin?.Invoke(value);
 
-        public void TriggerUpdateActivationOfUpgradeButtons(string coinsInPossession)
-            => UpdateActivationOfUpgradeButtons?.Invoke(coinsInPossession);
+        public void TriggerUpdateActivationOfUpgradeButtons()
+            => UpdateActivationOfUpgradeButtons?.Invoke();
     }
 }

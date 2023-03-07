@@ -13,11 +13,16 @@ namespace PizzaTower.Floors
         private FloorSettings _floorSettings;
         private string barTextConst;
 
-        private void Start() { }
+        protected override void Start() { }
 
         protected override void GetCosts()
         {
             costs = _floor.FloorSettings.FloorUpgradeCosts;
+        }
+
+        protected override void GetFirstValueOfButton()
+        {
+            UpdateUpgradeCost(1);
         }
 
         public void Initialize(FloorController floor)
@@ -27,17 +32,20 @@ namespace PizzaTower.Floors
             barTextConst = $"Floor {floor.FloorOrder} - Level ";
 
             GetCosts();
-            UpdateBarTMP(1);
-            UpdateUpgradeCostTMP(1);
-
+            GetEventManager();
+            GetFirstValueOfButton();
             SubscribeEvents();
+
+            UpdateBarTMP(1);
             _floor.UpgradeEvent += OnUpgrade;
-            _floor.UpgradeEvent += AddStar;
+
+            UpdateActivationOfUpgradeButton();
         }
 
         protected override void OnUpgrade(int floorLevel)
         {
             UpdateBarTMP(floorLevel);
+            AddStar(floorLevel);
 
             if (floorLevel == _floorSettings.FloorMaxLevel)
             {
@@ -47,7 +55,7 @@ namespace PizzaTower.Floors
                 return;
             }
 
-            UpdateUpgradeCostTMP(floorLevel);
+            base.OnUpgrade(floorLevel);
         }
 
         private void AddStar(int floorLevel)
