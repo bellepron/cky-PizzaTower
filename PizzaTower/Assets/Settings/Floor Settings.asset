@@ -15,8 +15,14 @@ MonoBehaviour:
   <TopFloorPrefabTr>k__BackingField: {fileID: 3640582162255529671, guid: 4f10eac489eed2045864592c6df30fa4, type: 3}
   <FloorPrefabTr>k__BackingField: {fileID: 2376636038151947187, guid: b337f976537e44848a6192987fb277d4, type: 3}
   <FloorOpeningTime>k__BackingField: 0.5
-  <TableOpeningTime>k__BackingField: 0.6
   <ChefOpeningTime>k__BackingField: 0.6
+  <ChefsTableOpeningTime>k__BackingField: 0.6
+  <FloorSupervisorOpeningTime>k__BackingField: 0.6
+  <FloorSupervisorDeskOpeningTime>k__BackingField: 0.6
+  <CanvasYellowBarOpeningTime>k__BackingField: 0.6
+  <CanvasStarsOpeningInterval>k__BackingField: 0.15
+  <CanvasStarsOpeningTime>k__BackingField: 0.15
+  <CanvasUpgradeButtonOpeningTime>k__BackingField: 0.4
   <ChefDeliveryPointX>k__BackingField: -2.5
   <FloorMaxLevel>k__BackingField: 50
   <ChefAddLevels>k__BackingField: 010000000a00000014000000

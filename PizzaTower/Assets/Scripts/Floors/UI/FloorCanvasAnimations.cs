@@ -30,7 +30,7 @@ namespace PizzaTower.Floors.UI
                           var seq = DOTween.Sequence();
                           seq.Append(OpenYellowBar());
                           seq.Append(OpenButtons());
-                          seq.OnComplete(() => OpenStars());
+                          seq.OnComplete(() => StartCoroutine(OpenStars()));
                       });
 
 
@@ -46,12 +46,7 @@ namespace PizzaTower.Floors.UI
             return buttonHolderTr.CanvasButtonAnimation(_floorSettings.CanvasUpgradeButtonOpeningTime);
         }
 
-        private void OpenStars()
-        {
-            StartCoroutine(OpenStarsWithOrder());
-        }
-
-        IEnumerator OpenStarsWithOrder()
+        IEnumerator OpenStars()
         {
             var delayWfs = new WaitForSeconds(_floorSettings.CanvasStarsOpeningInterval);
 
