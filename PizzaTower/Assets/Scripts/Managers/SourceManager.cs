@@ -18,7 +18,7 @@ namespace PizzaTower.Managers
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
-                AddCoin("10000");
+                AddCoin("9999999999999");
             }
         }
 

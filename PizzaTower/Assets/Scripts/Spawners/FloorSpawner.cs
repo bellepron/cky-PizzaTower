@@ -2,7 +2,6 @@ using PizzaTower.Managers;
 using PizzaTower.Floors;
 using CKY.Pooling;
 using UnityEngine;
-using DG.Tweening;
 using PizzaTower.Helpers;
 
 namespace PizzaTower.Spawners
@@ -10,7 +9,8 @@ namespace PizzaTower.Spawners
     public class FloorSpawner
     {
         private FloorSettings _floorSettings;
-        private Transform _topFloorTr;
+        private Transform _topFloorPrefabTr;
+        private TopFloorController _topFloorController;
         private Transform _floorPrefabTr;
 
         private Vector3 _floorStartPos;
@@ -28,7 +28,7 @@ namespace PizzaTower.Spawners
         private void GetVariables()
         {
             _floorSettings = LevelManager.Instance.levelSettings.FloorSettings;
-            _topFloorTr = _floorSettings.TopFloorPrefabTr;
+            _topFloorPrefabTr = _floorSettings.TopFloorPrefabTr;
             _floorPrefabTr = _floorSettings.FloorPrefabTr;
             _floorStartPos = _floorSettings.FloorStartPos;
             _increaseQuantityOfFloor = _floorSettings.IncreaseQuantityOfFloor;
@@ -37,7 +37,7 @@ namespace PizzaTower.Spawners
 
         private void CreateTopFloor(Vector3 pos)
         {
-            _topFloorTr = PoolManager.Instance.Spawn(_topFloorTr, pos, Quaternion.identity).transform;
+            _topFloorController = PoolManager.Instance.Spawn(_topFloorPrefabTr, pos, Quaternion.identity).GetComponent<TopFloorController>();
         }
 
         public void AddFloor(int floorCount)
@@ -56,7 +56,7 @@ namespace PizzaTower.Spawners
 
         private void SetTopFloorPosition(Vector3 pos)
         {
-            _topFloorTr.TopFloorAnimation(pos, _topFloorOffset.y, _floorSettings.FloorOpeningTime);
+            _topFloorController.SetPosition(pos, _topFloorOffset, _floorSettings);
         }
     }
 }
