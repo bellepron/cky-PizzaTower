@@ -6,6 +6,8 @@ using PizzaTower.Floors;
 using PizzaTower.Managers;
 using UnityEngine;
 using PizzaTower.Characters.ParkSupervisor;
+using System;
+using System.Drawing;
 
 namespace PizzaTower.Characters.DeliveryMan.StateMachine
 {
@@ -34,6 +36,8 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
             ChangeSortingLayer(order);
 
             InitState();
+
+            EventManager.DeliveryFloorUpgrade += UpgradeValues;
         }
 
         private void SetVariables(DeliveryManSettings deliveryManSettings, DeliveryFloorSettings deliveryFloorSettings, int order)
@@ -72,5 +76,11 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
         public Vector3 GetCollectPoint() => CollectTransform.position;
 
         public void RemovePizzas() => PizzaCount = 0;
+
+        private void UpgradeValues(int floorLevel)
+        {
+            MovementSpeed = InitMovementSpeed + InitMovementSpeed * (float)(floorLevel - 1) * 0.1f;
+            Capacity = InitCapacity + floorLevel;
+        }
     }
 }
