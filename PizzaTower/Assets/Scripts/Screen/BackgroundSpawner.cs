@@ -16,14 +16,14 @@ namespace PizzaTower.Screen
             _cam = Camera.main;
             _topY = backGroundSettings.StartPosY;
 
-            WhenFloorAdded(0);
+            WhenFloorAdded();
 
             EventManager.AddFloor += WhenFloorAdded;
         }
 
-        private void WhenFloorAdded(int obj)
+        private void WhenFloorAdded(int obj = 0)
         {
-            var topY = _cam.transform.position.y + _cam.orthographicSize;
+            var topY = _cam.transform.position.y + _cam.orthographicSize + 5;
 
             if (topY > _topY)
             {
@@ -33,7 +33,7 @@ namespace PizzaTower.Screen
 
                 _counter++;
 
-                WhenFloorAdded(0);
+                WhenFloorAdded();
             }
         }
     }
