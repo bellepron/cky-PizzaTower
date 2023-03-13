@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3688147429714981199}
   - component: {fileID: 4947748739202815357}
   - component: {fileID: 5912359355791449221}
+  - component: {fileID: 4817886975722976638}
   m_Layer: 0
   m_Name: Red Button
   m_TagString: Untagged
@@ -120,6 +121,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4817886975722976638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501864963045185976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560648a3714d48d4084165b7ebb3a96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: e15e18a7dddf8314ab9861056fb29b65, type: 2}
+  spriteName: RedBtn3
+  image: {fileID: 4947748739202815357}
 --- !u!1 &3832825410079671168
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +187,7 @@ GameObject:
   - component: {fileID: 2319681683023065337}
   - component: {fileID: 1915978669972764883}
   - component: {fileID: 6753839010826109370}
+  - component: {fileID: 2322305453491710921}
   m_Layer: 0
   m_Name: Red Button - With Yellow Pointer
   m_TagString: Untagged
@@ -279,6 +296,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2322305453491710921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5137368509567085142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560648a3714d48d4084165b7ebb3a96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: e15e18a7dddf8314ab9861056fb29b65, type: 2}
+  spriteName: RedBtn1
+  image: {fileID: 1915978669972764883}
 --- !u!1001 &5658484008086637001
 PrefabInstance:
   m_ObjectHideFlags: 0
