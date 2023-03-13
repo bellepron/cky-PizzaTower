@@ -39,7 +39,7 @@ namespace PizzaTower.Characters.Elevator.States
                     return;
             }
 
-            _elevatorTr.position += _direction * stateMachine.ElevatorSettings.UpSpeed * deltaTime;
+            _elevatorTr.position += _direction * stateMachine.UpSpeed * deltaTime;
 
             if (_elevatorTr.position.y >= _targetY)
             {

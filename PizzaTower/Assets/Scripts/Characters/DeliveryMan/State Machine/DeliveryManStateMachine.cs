@@ -29,6 +29,8 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
         private float InitGettingDeliveryTime { get; set; }
         private int InitCapacity { get; set; }
         public int PizzaCount { get; set; }
+        private int FloorLevel { get; set; } = 1;
+        private float BoostValue { get; set; } = 1;
 
         public void Initialize(DeliveryManSettings deliveryManSettings, DeliveryFloorSettings deliveryFloorSettings, int order)
         {
@@ -38,6 +40,13 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
             InitState();
 
             EventManager.DeliveryFloorUpgrade += UpgradeValues;
+            EventManager.Boost += Boosted;
+        }
+
+        private void Boosted(float boostValue)
+        {
+            BoostValue = boostValue;
+            UpgradeValues(FloorLevel);
         }
 
         private void SetVariables(DeliveryManSettings deliveryManSettings, DeliveryFloorSettings deliveryFloorSettings, int order)
@@ -79,7 +88,10 @@ namespace PizzaTower.Characters.DeliveryMan.StateMachine
 
         private void UpgradeValues(int floorLevel)
         {
+            FloorLevel = floorLevel;
+
             MovementSpeed = InitMovementSpeed + InitMovementSpeed * (float)(floorLevel - 1) * 0.1f;
+            MovementSpeed *= BoostValue;
             Capacity = InitCapacity + floorLevel;
         }
     }

@@ -14,6 +14,7 @@ namespace PizzaTower.Managers
         public static event Action<IPizzaHolderWithCapacity> DeliveryManArrivedToParkSupervisor;
         public static event Action<string> AddCoin, RemoveCoin;
         public static event Action UpdateActivationOfUpgradeButtons;
+        public static event Action<float> Boost;
 
         protected override void ResetEvents()
         {
@@ -24,9 +25,11 @@ namespace PizzaTower.Managers
             AddFloorSupervisorToElevator = null;
             AddPizzaToElevator = null;
             AddPizzaToParkSupervisor = null;
+            DeliveryManArrivedToParkSupervisor = null;
             AddCoin = null;
             RemoveCoin = null;
             UpdateActivationOfUpgradeButtons = null;
+            Boost = null;
         }
 
         public void TriggerAddFloor(int order)
@@ -55,5 +58,8 @@ namespace PizzaTower.Managers
 
         public void TriggerUpdateActivationOfUpgradeButtons()
             => UpdateActivationOfUpgradeButtons?.Invoke();
+
+        public void TriggerBoost(float value = 1)
+            => Boost?.Invoke(value);
     }
 }

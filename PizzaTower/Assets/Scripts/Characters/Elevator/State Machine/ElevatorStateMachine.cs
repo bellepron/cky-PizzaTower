@@ -21,6 +21,7 @@ namespace PizzaTower.Characters.Elevator.StateMachine
         public float DownSpeed { get; set; }
         public float DeliveryPointY { get; private set; }
         public int PizzaCount { get; set; }
+        private float BoostValue { get; set; } = 1;
 
         public void Initialize()
         {
@@ -32,6 +33,16 @@ namespace PizzaTower.Characters.Elevator.StateMachine
             GetVariables();
 
             InitState();
+
+            EventManager.Boost += Boosted;
+        }
+
+        private void Boosted(float boostValue)
+        {
+            BoostValue = boostValue;
+
+            UpSpeed *= BoostValue;
+            DownSpeed *= BoostValue;
         }
 
         private void GetVariables()
@@ -39,22 +50,17 @@ namespace PizzaTower.Characters.Elevator.StateMachine
             ElevatorSettings = LevelManager.Instance.levelSettings.ElevatorSettings;
             EventManager = (EventManager)EventManagerAbstract.Instance;
             DeliveryPointY = ElevatorSettings.DeliveryPointY;
+            UpSpeed = ElevatorSettings.UpSpeed;
+            DownSpeed = ElevatorSettings.DownSpeed;
         }
 
         private void AddFloorSupervisor(IPizzaHolder floorSupervisor)
-        {
-            FloorSupervisors.Add(floorSupervisor);
-        }
+            => FloorSupervisors.Add(floorSupervisor);
 
         private void AddPizzaFromFloorSupervisor(IPizzaHolder floorSupervisor)
-        {
-            PizzaCount += floorSupervisor.PizzaCount;
-        }
+            => PizzaCount += floorSupervisor.PizzaCount;
 
-        private void InitState()
-        {
-            SwitchState(new GoUpState(this));
-        }
+        private void InitState() => SwitchState(new GoUpState(this));
 
         public Vector3 GetPosition() => transform.position;
 

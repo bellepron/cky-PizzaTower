@@ -24,7 +24,7 @@ namespace PizzaTower.Characters.Elevator.States
 
         public override void Tick(float deltaTime)
         {
-            _elevatorTr.position += _direction * stateMachine.ElevatorSettings.DownSpeed * deltaTime;
+            _elevatorTr.position += _direction * stateMachine.DownSpeed * deltaTime;
 
             if (_elevatorTr.position.y <= _deliveryPointY)
             {

@@ -76,5 +76,11 @@ namespace PizzaTower.Helpers
             sequence.Append(itemTr.DOScale(Vector3.one * 1.25f, time * 0.25f).SetEase(Ease.InSine));
             sequence.Append(itemTr.DOScale(Vector3.one, time * 0.1f).SetEase(Ease.OutSine));
         }
+
+        public static void BoostButtonOpeningAnimation(this Transform itemTr,float time)
+        {
+            itemTr.transform.localScale = Vector3.zero;
+            itemTr.transform.DOScale(1, time);
+        }
     }
 }

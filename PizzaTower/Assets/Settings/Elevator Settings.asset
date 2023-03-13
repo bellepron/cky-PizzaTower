@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd89b248526dc4dbe475cc1aa3caeb, type: 3}
   m_Name: Elevator Settings
   m_EditorClassIdentifier: 
-  <UpSpeed>k__BackingField: 3
-  <DownSpeed>k__BackingField: 2
+  <UpSpeed>k__BackingField: 4
+  <DownSpeed>k__BackingField: 3
   <DeliveryPointY>k__BackingField: -12.7

@@ -4,6 +4,7 @@ using PizzaTower.Interfaces;
 using PizzaTower.Floors;
 using PizzaTower.Managers;
 using UnityEngine;
+using System;
 
 namespace PizzaTower.Characters.Chef.StateMachine
 {
@@ -21,6 +22,8 @@ namespace PizzaTower.Characters.Chef.StateMachine
         private float InitMovementSpeed { get; set; }
         private float InitCookTime { get; set; }
         public int PizzaCount { get; set; }
+        private int FloorLevel { get; set; } = 1;
+        private float BoostValue { get; set; } = 1;
 
         public void Initialize(FloorController floor, int orderInFloor, Vector3 tableLocalPosition, IPizzaHolder floorSupervisor)
         {
@@ -31,6 +34,13 @@ namespace PizzaTower.Characters.Chef.StateMachine
             InitState();
 
             floor.UpgradeEvent += UpgradeValues;
+            EventManager.Boost += Boosted;
+        }
+
+        private void Boosted(float boostValue)
+        {
+            BoostValue = boostValue;
+            UpgradeValues(FloorLevel);
         }
 
         private void SetVariables(FloorController floor, int orderInFloor, Vector3 tableLocalPosition, IPizzaHolder floorSupervisor)
@@ -61,8 +71,12 @@ namespace PizzaTower.Characters.Chef.StateMachine
 
         private void UpgradeValues(int floorLevel)
         {
-            MovementSpeed = InitMovementSpeed + InitMovementSpeed * (float)(floorLevel - 1) * 0.1f;
-            CookTime = InitCookTime - 0.5f * InitCookTime * (1 / (float)Floor.FloorSettings.FloorMaxLevel) * (float)(floorLevel - 1);
+            FloorLevel = floorLevel;
+
+            MovementSpeed = InitMovementSpeed + InitMovementSpeed * (float)(FloorLevel - 1) * 0.1f;
+            MovementSpeed *= BoostValue;
+            CookTime = InitCookTime - 0.5f * InitCookTime * (1 / (float)Floor.FloorSettings.FloorMaxLevel) * (float)(FloorLevel - 1);
+            CookTime /= BoostValue;
 
             Animator?.UpdateValues(MovementSpeed, 10 / CookTime);
         }
