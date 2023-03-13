@@ -54,12 +54,13 @@ namespace PizzaTower.Spawners
 
         private void CreateChef()
         {
-            var pos = _chefSpawnLocalPositions[_chefCount];
+            var chefIndex = _chefCount;
+            var pos = _chefSpawnLocalPositions[chefIndex];
             Transform chefTr = null;
 
             DOVirtual.DelayedCall(_floorSettings.ChefsTableOpeningTime, () =>
             {
-                chefTr = PoolManager.Instance.Spawn(_chefSettings[_chefCount].ChefPrefabTr, pos, Quaternion.identity).transform;
+                chefTr = PoolManager.Instance.Spawn(_chefSettings[chefIndex].ChefPrefabTr, pos, Quaternion.identity).transform;
                 chefTr.parent = _floorTransform;
                 chefTr.localPosition = pos;
 
@@ -67,7 +68,7 @@ namespace PizzaTower.Spawners
                        {
                            if (chefTr.TryGetComponent<ChefStateMachine>(out var chefSM))
                            {
-                               chefSM.Initialize(_floor, _chefCount, pos, _floorSupervisor);
+                               chefSM.Initialize(_floor, chefIndex, pos, _floorSupervisor);
                            }
                        });
             });
