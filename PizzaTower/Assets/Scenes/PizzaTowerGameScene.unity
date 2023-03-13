@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   m_Layer: 0
@@ -768,6 +769,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screenSettings: {fileID: 11400000, guid: 6b978d237cda9264cacf474f382f7dbe, type: 2}
+  offsetBetweenTopFloorAndCamera: 8.75
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d596a4acd5b32e44bb9a2d538e34723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backGroundSettings: {fileID: 11400000, guid: 2abe48f6d84e1f443a8ccf8f5a4cff44, type: 2}
 --- !u!1001 &519435921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1430,6 +1445,8 @@ MonoBehaviour:
     size: 3
   - prefabTr: {fileID: 1804551726782161218, guid: 83b86944fb722034aaa17f89464e3464, type: 3}
     size: 3
+  - prefabTr: {fileID: 2001709712215156026, guid: e84275b6f425ca5498c2e1ac51f5fc2a, type: 3}
+    size: 3
 --- !u!4 &1428058147
 Transform:
   m_ObjectHideFlags: 0
@@ -1871,6 +1888,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9061402854930175908, guid: c6a5bc48000525e4da311344ed60869e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9061402855246138168, guid: c6a5bc48000525e4da311344ed60869e, type: 3}
       propertyPath: m_Name
       value: Scene Base
