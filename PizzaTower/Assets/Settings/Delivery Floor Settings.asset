@@ -16,17 +16,17 @@ MonoBehaviour:
   <SpawnPoint>k__BackingField: {x: 10, y: -14.4, z: 0}
   <ParkingPoint>k__BackingField: {x: -2.3, y: -14.4, z: 0}
   <DeliveryPoint>k__BackingField: {x: 10, y: -14.4, z: 0}
-  <DeliveryMaxLevel>k__BackingField: 50
   <DeliveryManAddLevels>k__BackingField: 0100000002000000050000000a00000014000000190000001e00000023000000280000002d00000032000000
   <DeliveryFloorCosts>k__BackingField:
   - 175
   - 520
-  - 12500
-  - 250000
-  - 3800000
-  - 52000000
-  - 700000000
-  - 4700000000
-  - 28000000000
-  - 150000000000
-  - 4400000000000
+  - 1250
+  - 25000
+  - 380000
+  - 5200000
+  - 70000000
+  - 470000000
+  - 480000000
+  - 490000000
+  - 5000000000
+  - 7500000000
