@@ -41,8 +41,16 @@ namespace PizzaTower.Characters.Elevator.StateMachine
         {
             BoostValue = boostValue;
 
-            UpSpeed *= BoostValue;
-            DownSpeed *= BoostValue;
+            if (boostValue == 1)
+            {
+                UpSpeed = ElevatorSettings.UpSpeed;
+                DownSpeed = ElevatorSettings.DownSpeed;
+            }
+            else
+            {
+                UpSpeed *= BoostValue;
+                DownSpeed *= BoostValue;
+            }
         }
 
         private void GetVariables()
