@@ -31,7 +31,7 @@ namespace PizzaTower.Characters.Chef.States
 
             _chefTr.localPosition += _direction * stateMachine.MovementSpeed * deltaTime;
 
-            if (Mathf.Abs(_chefDeliveryPoint.x - _chefTr.localPosition.x) < 0.1f)
+            if (Mathf.Abs(_chefDeliveryPoint.x - _chefTr.localPosition.x) < 0.2f)
             {
                 ArrivedToTheDeliveryPoint();
             }
