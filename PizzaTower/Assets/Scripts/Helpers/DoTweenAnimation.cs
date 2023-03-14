@@ -41,7 +41,7 @@ namespace PizzaTower.Helpers
 
             sequence.Append(tableTr.DOScaleY(scaleY, tableOpeningTime * 0.65f).SetEase(Ease.InSine));
             sequence.Append(tableTr.DOScale(scale * 1.2f, tableOpeningTime * 0.25f).SetEase(Ease.InSine));
-            sequence.Append(tableTr.DOScale(scale, tableOpeningTime * 0.1f).SetEase(Ease.OutSine));
+            sequence.Append(tableTr.DOScale(Vector3.one, tableOpeningTime * 0.1f).SetEase(Ease.OutSine));
 
             return sequence;
         }
