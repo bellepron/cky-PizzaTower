@@ -34,7 +34,7 @@ namespace PizzaTower.Characters.DeliveryMan.States
 
             _deliveryManTr.transform.localPosition += _direction * stateMachine.MovementSpeed * deltaTime;
 
-            if (Mathf.Abs(_parkPoint.x - _deliveryManTr.position.x) < 0.1f)
+            if (Mathf.Abs(_parkPoint.x - _deliveryManTr.position.x) < 0.2f)
             {
                 _deliveryManTr.position = _parkPoint;
 
