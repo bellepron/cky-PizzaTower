@@ -8,5 +8,4 @@
 # Tools
 - DoTween
 
-# SS
-![alt text](https://github.com/bellepron/cky-PizzaTower/blob/main/PizzaTower/Assets/Pizza%20Tower%20-%20Idle%20Game/PizzaTower.png?raw=true)
+https://user-images.githubusercontent.com/54662650/225024460-6b9f10cf-db22-42c0-909f-117da93fb3fb.mp4
